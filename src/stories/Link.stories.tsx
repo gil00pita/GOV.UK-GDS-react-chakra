@@ -1,5 +1,7 @@
-import { Link, Stack, Text } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Stack, Text } from '@chakra-ui/react'
+
+import { Link } from '../components/Link'
 
 const meta: Meta<typeof Link> = {
   title: 'GOV.UK/Link',
@@ -46,38 +48,9 @@ export const InlineText: Story = {
 export const States: Story = {
   render: () => (
     <Stack align="start" spacing={3}>
-      <Link
-        href="#"
-        color="brand.blue"
-        textDecoration="underline"
-        _hover={{ color: 'brand.blueDark' }}
-      >
-        Default link (manual GOV.UK style)
-      </Link>
-      <Link
-        href="#"
-        color="brand.blue"
-        textDecoration="underline"
-        _hover={{ color: 'brand.blueDark' }}
-      >
-        Hover link
-      </Link>
-      <Link
-        href="#visited"
-        color="brand.darkGrey"
-        textDecoration="underline"
-        _hover={{ color: 'brand.blueDark' }}
-      >
-        Visited style example
-      </Link>
-      <Link
-        href="#"
-        isExternal
-        color="brand.blue"
-        textDecoration="underline"
-        _hover={{ color: 'brand.blueDark' }}
-      >
-        External link (opens in new tab)
+      <Link href="#">Default GOV.UK link</Link>
+      <Link href="#" isExternal>
+        External GOV.UK link
       </Link>
     </Stack>
   ),

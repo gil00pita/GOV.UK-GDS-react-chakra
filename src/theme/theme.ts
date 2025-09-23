@@ -74,6 +74,31 @@ export const theme = createSystem(defaultConfig, {
         outlineOffset: '0 !important',
         backgroundColor: 'var(--colors-brand-yellow) !important',
       },
+      // Target Chakra's internal CSS classes and data attributes
+      '[data-theme] .chakra-link, [data-theme] a': {
+        color: 'var(--colors-brand-blue)',
+        textDecoration: 'underline',
+        '&:hover': {
+          color: 'var(--colors-brand-blue-dark)',
+        },
+        '&:focus': {
+          outline: '3px solid var(--colors-brand-yellow)',
+          outlineOffset: '0',
+          backgroundColor: 'var(--colors-brand-yellow)',
+        },
+      },
+      // Button targeting
+      '[data-theme] .chakra-button': {
+        fontWeight: 'bold',
+        borderRadius: '0',
+        '&[data-variant="solid"]': {
+          backgroundColor: 'var(--colors-brand-blue)',
+          color: 'white',
+          '&:hover': {
+            backgroundColor: 'var(--colors-brand-blue-dark)',
+          },
+        },
+      },
     },
     // Remove recipes.link since it doesn't work for built-in Link
     // recipes: {

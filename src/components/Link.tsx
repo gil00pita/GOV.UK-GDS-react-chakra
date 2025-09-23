@@ -1,21 +1,31 @@
 import { Link as ChakraLink, LinkProps as ChakraLinkProps } from '@chakra-ui/react'
 
-import { RecipeVariantProps } from '@chakra-ui/react'
+import { forwardRef } from 'react'
 
-// import { linkTheme } from "../theme/components/link"
+export type LinkProps = ChakraLinkProps
 
-interface LinkProps extends Omit<ChakraLinkProps, 'variant'>, RecipeVariantProps<any> {}
-
-export const Link = ({ className, ...props }: LinkProps) => {
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   return (
     <ChakraLink
-      className={className}
+      ref={ref}
+      color="govuk.blue"
+      textDecoration="underline"
+      fontWeight="normal"
+      rounded="1px"
       _hover={{
-        textDecoration: 'underline',
+        color: 'govuk.darkBlue',
+      }}
+      _focus={{
         color: 'black',
-        bgColor: 'gray.100',
+        textDecorationThickness: '3px',
+        outline: '3px solid',
+        outlineColor: 'govuk.yellow',
+        outlineOffset: '0',
+        backgroundColor: 'govuk.yellow',
       }}
       {...props}
     />
   )
-}
+})
+
+Link.displayName = 'Link'
