@@ -1,15 +1,15 @@
-import { buttonTheme } from './button';
-import { inputTheme } from './input';
-import { textareaTheme } from './textarea';
-import { selectTheme } from './select';
-import { checkboxTheme } from './checkbox';
-import { radioTheme } from './radio';
-import { linkTheme } from './link';
-import { headingTheme } from './heading';
-import { textTheme } from './text';
-import { alertTheme } from './alert';
-import { cardTheme } from './card';
-import { tableTheme } from './table';
+import { alertTheme } from './alert'
+import { buttonTheme } from './button'
+import { cardTheme } from './card'
+import { checkboxTheme } from './checkbox'
+import { headingTheme } from './heading'
+import { inputTheme } from './input'
+import { linkTheme } from './link'
+import { radioTheme } from './radio'
+import { selectTheme } from './select'
+import { tableTheme } from './table'
+import { textTheme } from './text'
+import { textareaTheme } from './textarea'
 
 export const components = {
   Button: buttonTheme,
@@ -24,4 +24,4 @@ export const components = {
   Alert: alertTheme,
   Card: cardTheme,
   Table: tableTheme,
-};
+}

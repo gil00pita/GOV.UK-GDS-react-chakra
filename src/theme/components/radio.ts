@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const radioTheme = defineRecipe({
   className: 'radio',
@@ -30,4 +30,4 @@ export const radioTheme = defineRecipe({
       cursor: 'not-allowed',
     },
   },
-});
+})

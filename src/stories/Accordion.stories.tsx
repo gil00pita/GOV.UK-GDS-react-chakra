@@ -50,7 +50,7 @@ const GovUkAccordion = () => {
       w="760px"
       maxW="100%"
       fontSize="16px"
-      sx={{
+      css={{
         // GOV.UK-like section headings
         h2: { fontSize: '19px', fontWeight: 700, lineHeight: '1.3', m: 0 },
       }}

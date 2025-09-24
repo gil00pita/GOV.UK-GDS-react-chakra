@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const alertTheme = defineRecipe({
   className: 'alert',
@@ -36,4 +36,4 @@ export const alertTheme = defineRecipe({
   defaultVariants: {
     variant: 'info',
   },
-});
+})

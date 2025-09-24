@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const selectTheme = defineRecipe({
   className: 'select',
@@ -36,4 +36,4 @@ export const selectTheme = defineRecipe({
       bg: 'gray.100',
     },
   },
-});
+})

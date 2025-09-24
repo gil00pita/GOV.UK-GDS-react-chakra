@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const tableTheme = defineRecipe({
   className: 'table',
@@ -50,4 +50,4 @@ export const tableTheme = defineRecipe({
   defaultVariants: {
     variant: 'simple',
   },
-});
+})

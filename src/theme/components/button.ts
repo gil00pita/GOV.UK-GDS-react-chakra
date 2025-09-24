@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const buttonTheme = defineRecipe({
   className: 'button',
@@ -69,4 +69,4 @@ export const buttonTheme = defineRecipe({
   defaultVariants: {
     variant: 'primary',
   },
-});
+})

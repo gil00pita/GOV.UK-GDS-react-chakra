@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const cardTheme = defineRecipe({
   className: 'card',
@@ -25,4 +25,4 @@ export const cardTheme = defineRecipe({
   defaultVariants: {
     variant: 'outline',
   },
-});
+})

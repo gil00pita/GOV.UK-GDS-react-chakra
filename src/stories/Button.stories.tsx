@@ -24,7 +24,7 @@ export const Default: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <Stack spacing={4}>
+    <Stack gap={4}>
       <Button
         bg="brand.blue"
         color="white"

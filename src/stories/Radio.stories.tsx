@@ -1,7 +1,16 @@
-// Radio.stories.tsx
-import { Field, RadioGroup, VStack, Stack } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
 import * as React from 'react'
+
+// Radio.stories.tsx
+import { Field, RadioGroup, Stack, VStack } from '@chakra-ui/react'
+import type { Meta, StoryObj } from '@storybook/react'
+
+// Extend component props with story-only controls
+type StoryControls = React.ComponentProps<typeof RadioGroup.Root> & {
+  fieldInvalid?: boolean
+  fieldRequired?: boolean
+  itemDisabled?: boolean
+  itemGap?: number
+}
 
 const OPTIONS = [
   { value: 'england', label: 'England' },
@@ -10,7 +19,7 @@ const OPTIONS = [
   { value: 'ni', label: 'Northern Ireland' },
 ]
 
-const meta = {
+const meta: Meta<StoryControls> = {
   title: 'GOV.UK/Radio',
   component: RadioGroup.Root,
   tags: ['autodocs'],
@@ -20,8 +29,8 @@ const meta = {
   argTypes: {
     // Group-level state
     disabled: { control: 'boolean' },
-    required: { control: 'boolean' },
-    invalid: { control: 'boolean' },
+    fieldRequired: { control: 'boolean', name: 'required' },
+    fieldInvalid: { control: 'boolean', name: 'invalid' },
     readOnly: { control: 'boolean' },
 
     // Group wiring
@@ -31,9 +40,9 @@ const meta = {
 
     // Layout
     orientation: { control: 'inline-radio', options: ['vertical', 'horizontal'] },
-    gap: { control: { type: 'number', min: 0, step: 1 } },
+    itemGap: { control: { type: 'number', min: 0, step: 1 }, name: 'gap' },
 
-    // Item-level showcase (applied to first item)
+    // Item-level
     itemDisabled: { control: 'boolean', name: 'first item: disabled' },
   },
 
@@ -42,31 +51,36 @@ const meta = {
     defaultValue: 'england',
     value: '',
     disabled: false,
-    required: false,
-    invalid: false,
+    fieldRequired: false,
+    fieldInvalid: false,
     readOnly: false,
     orientation: 'vertical',
-    gap: 3,
+    itemGap: 3,
     itemDisabled: false,
   },
 
-  render: (args) => {
+  render: (args: StoryControls) => {
     // Controlled vs uncontrolled: if args.value is a non-empty string, treat as controlled.
-    const [controlled, setControlled] = React.useState(args.value || '')
+    const [controlled, setControlled] = React.useState<string>(args.value || '')
     const isControlled = Boolean(args.value && args.value.length)
 
     React.useEffect(() => {
-      if (args.value !== undefined) setControlled(args.value)
+      if (args.value !== undefined) {
+        setControlled(args.value ?? '')
+      }
     }, [args.value])
 
     const groupProps = {
       name: args.name,
       disabled: args.disabled,
-      required: args.required,
-      invalid: args.invalid,
       readOnly: args.readOnly,
       ...(isControlled
-        ? { value: controlled, onValueChange: (e: { value: string }) => setControlled(e.value) }
+        ? {
+            value: controlled,
+            onValueChange: ({ value }: { value: string | null }) => {
+              setControlled(value ?? '')
+            },
+          }
         : { defaultValue: args.defaultValue }),
     }
 
@@ -86,10 +100,12 @@ const meta = {
     )
 
     return (
-      <Field.Root required={args.required} invalid={args.invalid}>
+      <Field.Root required={args.fieldRequired} invalid={args.fieldInvalid}>
         <Field.Label>Where do you live?</Field.Label>
         <RadioGroup.Root
           {...groupProps}
+          aria-invalid={args.fieldInvalid || undefined}
+          aria-required={args.fieldRequired || undefined}
           // visual cue that brand tokens are active (uses resolved token)
           style={{
             padding: '8px 12px',
@@ -100,24 +116,24 @@ const meta = {
           }}
         >
           {args.orientation === 'vertical' ? (
-            <VStack align="start" gap={args.gap}>
+            <VStack align="start" gap={args.itemGap}>
               {Items}
             </VStack>
           ) : (
-            <Stack direction="row" align="center" gap={args.gap}>
+            <Stack direction="row" align="center" gap={args.itemGap}>
               {Items}
             </Stack>
           )}
         </RadioGroup.Root>
-        {!args.invalid && <Field.HelperText>Select one option.</Field.HelperText>}
-        {args.invalid && <Field.ErrorText>Please select your country.</Field.ErrorText>}
+        {!args.fieldInvalid && <Field.HelperText>Select one option.</Field.HelperText>}
+        {args.fieldInvalid && <Field.ErrorText>Please select your country.</Field.ErrorText>}
       </Field.Root>
     )
   },
-} satisfies Meta<typeof RadioGroup.Root>
+}
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<StoryControls>
 
 // A minimal single-radio example (matches your original “Default”)
 export const Single: Story = {

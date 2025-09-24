@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const headingTheme = defineRecipe({
   className: 'heading',
@@ -36,4 +36,4 @@ export const headingTheme = defineRecipe({
   defaultVariants: {
     size: 'md',
   },
-});
+})

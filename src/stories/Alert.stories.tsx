@@ -1,8 +1,10 @@
 // Alert.stories.tsx
 import { Alert, VStack } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
 import { GoAlert, GoCheckCircle } from 'react-icons/go'
+import type { Meta, StoryObj } from '@storybook/react'
+
 import { FiInfo } from 'react-icons/fi'
+import { JSX } from 'react'
 import { TbAlertHexagon } from 'react-icons/tb'
 
 type Status = 'info' | 'warning' | 'success' | 'error'
@@ -14,7 +16,13 @@ const ICON: Record<Status, JSX.Element> = {
   error: <GoAlert />,
 }
 
-const meta = {
+type AlertStoryControls = {
+  status: Status
+  title: string
+  description: string
+}
+
+const meta: Meta<AlertStoryControls> = {
   title: 'GOV.UK/Alert',
   component: Alert.Root,
   tags: ['autodocs'],
@@ -36,10 +44,10 @@ const meta = {
       <Alert.Description>{description}</Alert.Description>
     </Alert.Root>
   ),
-} satisfies Meta<typeof Alert.Root>
+}
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<AlertStoryControls>
 
 export const Info: Story = {
   args: {

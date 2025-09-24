@@ -1,13 +1,14 @@
 import { Button, ButtonProps } from '@chakra-ui/react'
+
 import { forwardRef } from 'react'
 
-export interface GovUKButtonProps extends ButtonProps {
-  variant?: 'primary' | 'secondary' | 'warning' | 'link'
+export interface GovUKButtonProps extends Omit<ButtonProps, 'variant'> {
+  govVariant?: 'primary' | 'secondary' | 'warning' | 'link'
 }
 
 export const GovUKButton = forwardRef<HTMLButtonElement, GovUKButtonProps>(
-  ({ variant = 'primary', ...props }, ref) => {
-    const variantStyles = {
+  ({ govVariant = 'primary', ...props }, ref) => {
+    const variantStyles: Record<NonNullable<GovUKButtonProps['govVariant']>, ButtonProps> = {
       primary: {
         bg: 'brand.blue',
         color: 'white',
@@ -38,7 +39,7 @@ export const GovUKButton = forwardRef<HTMLButtonElement, GovUKButtonProps>(
         ref={ref}
         fontWeight="bold"
         borderRadius="0"
-        {...variantStyles[variant]}
+        {...variantStyles[govVariant]}
         {...props}
       />
     )

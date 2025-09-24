@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const textTheme = defineRecipe({
   className: 'text',
@@ -30,4 +30,4 @@ export const textTheme = defineRecipe({
   defaultVariants: {
     variant: 'body',
   },
-});
+})

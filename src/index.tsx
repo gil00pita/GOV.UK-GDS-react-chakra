@@ -4,13 +4,13 @@ import App from './App'
 import { ChakraProvider } from '@chakra-ui/react'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { govUkTheme } from './theme'
 import reportWebVitals from './reportWebVitals'
-import { theme } from './theme'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <ChakraProvider value={theme}>
+    <ChakraProvider value={govUkTheme}>
       <App />
     </ChakraProvider>
   </React.StrictMode>

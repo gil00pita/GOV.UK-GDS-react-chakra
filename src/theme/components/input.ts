@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const inputTheme = defineRecipe({
   className: 'input',
@@ -74,4 +74,4 @@ export const inputTheme = defineRecipe({
     size: 'md',
     variant: 'outline',
   },
-});
+})

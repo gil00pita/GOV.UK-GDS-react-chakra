@@ -1,4 +1,4 @@
-import { defineRecipe } from '@chakra-ui/react';
+import { defineRecipe } from '@chakra-ui/react'
 
 export const checkboxTheme = defineRecipe({
   className: 'checkbox',
@@ -27,4 +27,4 @@ export const checkboxTheme = defineRecipe({
       cursor: 'not-allowed',
     },
   },
-});
+})
