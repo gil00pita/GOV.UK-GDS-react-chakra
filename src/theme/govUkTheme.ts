@@ -1,5 +1,5 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
-import { pxToRem, govukSpacing, govukFontSizes } from '../utils'
+import { govukFontSizes, govukSpacing, pxToRem } from '../utils'
 
 import { colors } from './colors'
 import { fonts } from './fonts'
@@ -14,6 +14,16 @@ const govUkThemeConfig = defineConfig({
         sm: { value: '0' },
         md: { value: '0' },
         lg: { value: '0' },
+      },
+    },
+    globalStyles: {
+      styles: {
+        global: {
+          body: {
+            bg: 'red',
+            fontSize: govukFontSizes[19],
+          },
+        },
       },
     },
     semanticTokens: {

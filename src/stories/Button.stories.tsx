@@ -1,5 +1,8 @@
-import { Button, Stack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { Button } from '@/components'
+import { Stack } from '@chakra-ui/react'
+import { pxToRem } from '@/utils'
 
 const meta: Meta<typeof Button> = {
   title: 'GOV.UK/Button',
@@ -12,48 +15,28 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+  argTypes: {
+    colorPalette: {
+      control: { type: 'select' },
+      options: ['brand', 'secondary', 'error', 'inverse', 'link'],
+    },
+    showArrow: 'boolean',
+  },
   args: {
     children: 'Start now',
-    bg: 'brand.blue',
-    color: 'white',
-    fontWeight: 'bold',
-    borderRadius: '0',
-    _hover: { bg: 'brand.blueDark' },
+    colorPalette: 'brand',
+    showArrow: false,
   },
 }
 
 export const AllVariants: Story = {
   render: () => (
     <Stack gap={4}>
-      <Button
-        bg="brand.blue"
-        color="white"
-        fontWeight="bold"
-        borderRadius="0"
-        _hover={{ bg: 'brand.blueDark' }}
-      >
-        Primary (GOV.UK style)
-      </Button>
-      <Button
-        bg="white"
-        color="brand.blue"
-        borderWidth="2px"
-        borderColor="brand.blue"
-        fontWeight="bold"
-        borderRadius="0"
-        _hover={{ bg: 'brand.lightGrey' }}
-      >
-        Secondary
-      </Button>
-      <Button
-        bg="brand.red"
-        color="white"
-        fontWeight="bold"
-        borderRadius="0"
-        _hover={{ bg: '#aa2a14' }}
-      >
-        Warning
-      </Button>
+      <Button colorPalette="brand">Primary (GOV.UK style)</Button>
+      <Button colorPalette="secondary">Secondary</Button>
+      <Button colorPalette="error">Error</Button>
+      <Button colorPalette="inverse">Inverse</Button>
+      <Button colorPalette="link">Link</Button>
     </Stack>
   ),
 }
