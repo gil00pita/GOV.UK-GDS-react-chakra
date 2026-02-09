@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   argTypes: {
-    colorPalette: {
+    variant: {
       control: { type: 'select' },
       options: ['brand', 'secondary', 'error', 'inverse', 'link'],
     },
@@ -24,7 +24,7 @@ export const Default: Story = {
   },
   args: {
     children: 'Start now',
-    colorPalette: 'brand',
+    variant: 'brand',
     showArrow: false,
   },
 }
@@ -32,11 +32,11 @@ export const Default: Story = {
 export const AllVariants: Story = {
   render: () => (
     <Stack gap={4}>
-      <Button colorPalette="brand">Primary (GOV.UK style)</Button>
-      <Button colorPalette="secondary">Secondary</Button>
-      <Button colorPalette="error">Error</Button>
-      <Button colorPalette="inverse">Inverse</Button>
-      <Button colorPalette="link">Link</Button>
+      <Button variant="brand">Primary (GOV.UK style)</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="error">Error</Button>
+      <Button variant="inverse">Inverse</Button>
+      <Button variant="link">Link</Button>
     </Stack>
   ),
 }
