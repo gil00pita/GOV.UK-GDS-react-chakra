@@ -1,5 +1,5 @@
 {
-  "name": "govuk-chakra-theme",
+  "name": "govuk-gds-react-chakra",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -85,6 +85,7 @@
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
     "prop-types": "^15.8.1",
+    "react-doctor": "^0.0.30",
     "storybook": "^10.2.17",
     "vite": "^7.3.1",
     "vite-tsconfig-paths": "^6.1.1",
