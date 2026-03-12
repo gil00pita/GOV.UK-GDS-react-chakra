@@ -61,6 +61,7 @@ export const Checkbox = {
           '& > .control': {
             bg: 'common.transparent',
             borderColor: 'common.black',
+            boxShadow: size === 'sm' ? `0 0 0 10px var(--govuk-color-hover, #cecece)` : 'none',
           },
           '& > .control > .indicator': {
             stroke: 'fg',
