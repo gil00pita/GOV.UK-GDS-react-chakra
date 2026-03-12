@@ -1,5 +1,5 @@
-import { Checkbox, CheckboxGroup, Fieldset, VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Checkbox } from '@/components/Checkbox'
 
 const meta: Meta<typeof Checkbox.Root> = {
   title: 'GOV.UK/Checkbox',
@@ -9,7 +9,7 @@ const meta: Meta<typeof Checkbox.Root> = {
   },
   tags: ['autodocs'],
   args: {
-    disabled: true,
+    disabled: false,
   },
   argTypes: {
     disabled: {
@@ -32,8 +32,22 @@ export const Default: Story = {
 
 export const Checked: Story = {
   args: {
-    checked: true,
+    defaultChecked: true,
     children: 'Pre-selected option',
+  },
+}
+
+export const WithHint: Story = {
+  args: {
+    children: 'Waste from animal carcasses',
+    hint: 'Including abattoir waste and dead animals',
+  },
+}
+
+export const SmallCheckbox: Story = {
+  args: {
+    children: 'HM Revenue and Customs',
+    small: true,
   },
 }
 
@@ -46,30 +60,57 @@ export const DisabledCheckbox: Story = {
 
 export const CheckboxGroupExample: Story = {
   render: () => (
-    <Fieldset.Root>
-      <Fieldset.Legend>Which types of waste do you transport?</Fieldset.Legend>
-      <VStack align="start" gap={3}>
-        <Checkbox.Root value="waste-animal">
-          <Checkbox.HiddenInput />
-          <Checkbox.Control />
-          <Checkbox.Label>Waste from animal carcasses</Checkbox.Label>
-        </Checkbox.Root>
-        <Checkbox.Root value="waste-mines">
-          <Checkbox.HiddenInput />
-          <Checkbox.Control />
-          <Checkbox.Label>Waste from mines or quarries</Checkbox.Label>
-        </Checkbox.Root>
-        <Checkbox.Root value="waste-farm">
-          <Checkbox.HiddenInput />
-          <Checkbox.Control />
-          <Checkbox.Label>Farm or agricultural waste</Checkbox.Label>
-        </Checkbox.Root>
-        <Checkbox.Root value="waste-clinical">
-          <Checkbox.HiddenInput />
-          <Checkbox.Control />
-          <Checkbox.Label>Clinical waste</Checkbox.Label>
-        </Checkbox.Root>
-      </VStack>
-    </Fieldset.Root>
+    <Checkbox.Group legend="Which types of waste do you transport?" hint="Select all that apply.">
+      <Checkbox.Root value="waste-animal">Waste from animal carcasses</Checkbox.Root>
+      <Checkbox.Root value="waste-mines">Waste from mines or quarries</Checkbox.Root>
+      <Checkbox.Root value="waste-farm">Farm or agricultural waste</Checkbox.Root>
+      <Checkbox.Root value="waste-clinical">Clinical waste</Checkbox.Root>
+    </Checkbox.Group>
+  ),
+}
+
+export const WithHintsGroup: Story = {
+  render: () => (
+    <Checkbox.Group legend="Which types of waste do you transport?" hint="Select all that apply.">
+      <Checkbox.Root value="waste-animal" hint="Including abattoir waste and dead animals">
+        Waste from animal carcasses
+      </Checkbox.Root>
+      <Checkbox.Root value="waste-mines" hint="ite waste andite tailings">
+        Waste from mines or quarries
+      </Checkbox.Root>
+      <Checkbox.Root value="waste-farm" hint="For example, slurry">
+        Farm or agricultural waste
+      </Checkbox.Root>
+    </Checkbox.Group>
+  ),
+}
+
+export const WithError: Story = {
+  render: () => (
+    <Checkbox.Group
+      legend="Which types of waste do you transport?"
+      hint="Select all that apply."
+      error="Select the types of waste you transport"
+    >
+      <Checkbox.Root value="waste-animal">Waste from animal carcasses</Checkbox.Root>
+      <Checkbox.Root value="waste-mines">Waste from mines or quarries</Checkbox.Root>
+      <Checkbox.Root value="waste-farm">Farm or agricultural waste</Checkbox.Root>
+    </Checkbox.Group>
+  ),
+}
+
+export const SmallCheckboxGroup: Story = {
+  render: () => (
+    <Checkbox.Group legend="Organisation">
+      <Checkbox.Root value="hmrc" small>
+        HM Revenue and Customs
+      </Checkbox.Root>
+      <Checkbox.Root value="employment" small>
+        Employment Tribunal
+      </Checkbox.Root>
+      <Checkbox.Root value="mod" small>
+        Ministry of Defence
+      </Checkbox.Root>
+    </Checkbox.Group>
   ),
 }

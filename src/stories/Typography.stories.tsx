@@ -1,7 +1,7 @@
-import { Heading, Text, VStack } from '@chakra-ui/react'
+import { VStack } from '@chakra-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-
-import { Link } from '../components/Link'
+import { Heading, Text } from '@/components'
+import { Link } from '@/components/Link'
 
 const meta: Meta = {
   title: 'GOV.UK/Typography',
@@ -13,6 +13,79 @@ const meta: Meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+const govukSizeOptions = [16, 19, 24, 27, 36, 48, 80]
+const headingOptions = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p']
+// const textOptions = ['span', 'p']
+const componentTypeOptions = ['Heading', 'Text']
+
+export const HeadingStory: StoryObj<typeof Heading> = {
+  name: 'Heading',
+  args: {
+    componentType: 'heading',
+    size: 'xl',
+    as: 'h1',
+    children: 'Extra Large Heading (H1)',
+  },
+  argTypes: {
+    componentType: {
+      control: 'select',
+      options: [...componentTypeOptions],
+      description: 'React component being using Text or Heading to render',
+    },
+    size: {
+      control: 'select',
+      options: [...govukSizeOptions],
+      description: 'GOV.UK type scale number (16, 19, 24, 27, 36, 48, 80)',
+    },
+    as: {
+      control: 'select',
+      options: headingOptions,
+      description: 'HTML heading element to render',
+    },
+    children: {
+      control: 'text',
+      description: 'Heading content',
+    },
+    fontWeight: {
+      control: 'select',
+      options: ['normal', 'medium', 'semibold', 'bold'],
+    },
+    color: {
+      control: 'text',
+    },
+  },
+  render: ({ componentType, ...rest }) =>
+    componentType === 'Heading' ? <Heading {...rest} /> : <Text {...rest} />,
+}
+
+export const TextStory: StoryObj<typeof Text> = {
+  name: 'Text',
+  args: {
+    fontSize: 'md',
+    children:
+      'This is body text. The default text size is 19px and it should be used for all body content.',
+  },
+  argTypes: {
+    fontSize: {
+      control: 'select',
+      options: [...govukSizeOptions],
+      description: 'GOV.UK type scale number (16, 19, 24, 27, 36, 48, 80)',
+    },
+    children: {
+      control: 'text',
+      description: 'Text content',
+    },
+    fontWeight: {
+      control: 'select',
+      options: ['normal', 'medium', 'semibold', 'bold'],
+    },
+    color: {
+      control: 'text',
+    },
+  },
+  render: (args) => <Text {...args} />,
+}
 
 export const Headings: Story = {
   render: () => (
