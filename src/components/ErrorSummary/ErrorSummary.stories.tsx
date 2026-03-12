@@ -4,7 +4,7 @@ import { ErrorSummary } from './ErrorSummary'
 import { pxToRem } from '@/utils'
 
 const meta: Meta<typeof ErrorSummary> = {
-  title: 'Components/ErrorSummary',
+  title: 'GOV.UK/ErrorSummary',
   component: ErrorSummary,
   parameters: {
     layout: 'padded',
