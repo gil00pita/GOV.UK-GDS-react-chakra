@@ -33,7 +33,7 @@ export interface TaskListProps extends StackProps {
   heading?: ReactNode
 }
 
-export interface TaskListItemProps extends BoxProps {
+export interface TaskListItemProps extends Omit<BoxProps, 'title'> {
   title: ReactNode
   href: string
   status?: TaskStatus
@@ -83,7 +83,7 @@ const TaskListItem = forwardRef<HTMLLIElement, TaskListItemProps>(function TaskL
     .replace(/[^a-z0-9]+/g, '-')}`
 
   return (
-    <LinkBox
+    <Box
       ref={ref}
       as="li"
       borderBottom="1px solid"
@@ -93,40 +93,42 @@ const TaskListItem = forwardRef<HTMLLIElement, TaskListItemProps>(function TaskL
       _hover={{ bg: 'grey.50' }}
       {...props}
     >
-      <HStack align="center" justify="space-between" gap={pxToRem(15)}>
-        <Box flex="1" minW={0}>
-          <LinkOverlay
-            href={href}
-            color="brand.500"
-            fontSize={19}
-            lineHeight={pxToRem(25)}
-            textDecoration="underline"
-            textUnderlineOffset="0.1578em"
-            textDecorationThickness="max(1px, 0.0625rem)"
-            aria-describedby={hint ? `${statusId}-hint ${statusId}` : statusId}
-            _hover={{ color: 'brand.700', textDecorationThickness: 'max(3px, 0.1875rem)' }}
-            _focus={{
-              bg: 'yellow.500',
-              color: 'common.black',
-              outline: '3px solid',
-              outlineColor: 'yellow.500',
-              outlineOffset: 0,
-              textDecorationThickness: 'max(3px, 0.1875rem)',
-            }}
-          >
-            {title}
-          </LinkOverlay>
+      <LinkBox>
+        <HStack align="center" justify="space-between" gap={pxToRem(15)}>
+          <Box flex="1" minW={0}>
+            <LinkOverlay
+              href={href}
+              color="brand.500"
+              fontSize={19}
+              lineHeight={pxToRem(25)}
+              textDecoration="underline"
+              textUnderlineOffset="0.1578em"
+              textDecorationThickness="max(1px, 0.0625rem)"
+              aria-describedby={hint ? `${statusId}-hint ${statusId}` : statusId}
+              _hover={{ color: 'brand.700', textDecorationThickness: 'max(3px, 0.1875rem)' }}
+              _focus={{
+                bg: 'yellow.500',
+                color: 'common.black',
+                outline: '3px solid',
+                outlineColor: 'yellow.500',
+                outlineOffset: 0,
+                textDecorationThickness: 'max(3px, 0.1875rem)',
+              }}
+            >
+              {title}
+            </LinkOverlay>
 
-          {hint ? (
-            <Text id={`${statusId}-hint`} fontSize={16} color="grey.400" mt={pxToRem(4)} mb={0}>
-              {hint}
-            </Text>
-          ) : null}
-        </Box>
+            {hint ? (
+              <Text id={`${statusId}-hint`} fontSize={16} color="grey.400" mt={pxToRem(4)} mb={0}>
+                {hint}
+              </Text>
+            ) : null}
+          </Box>
 
-        <TaskListStatus id={statusId} status={status} />
-      </HStack>
-    </LinkBox>
+          <TaskListStatus id={statusId} status={status} />
+        </HStack>
+      </LinkBox>
+    </Box>
   )
 })
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextArea } from './TextArea'
+import { TextArea } from './Textarea'
 
 const meta: Meta<typeof TextArea> = {
   title: 'GOV.UK/Textarea',

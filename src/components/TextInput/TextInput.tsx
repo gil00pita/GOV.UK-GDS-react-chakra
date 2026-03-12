@@ -23,6 +23,7 @@ export interface TextInputProps extends Omit<InputProps, 'size'> {
   width?: TextInputWidth
   labelSize?: 19 | 24
   formProps?: Omit<FieldRootProps, 'children' | 'invalid'>
+  invalid?: boolean
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function TextInput(

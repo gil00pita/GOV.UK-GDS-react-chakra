@@ -1,10 +1,10 @@
-import { Box, HStack, type BoxProps, type HStackProps, VisuallyHidden } from '@chakra-ui/react'
+import { Box, HStack, type BoxProps, type StackProps, VisuallyHidden } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
 
-export interface WarningTextProps extends HStackProps {
+export interface WarningTextProps extends StackProps {
   children: ReactNode
   assistiveText?: string
   iconText?: string

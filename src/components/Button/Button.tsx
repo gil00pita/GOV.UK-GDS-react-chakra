@@ -1,22 +1,22 @@
-import { ButtonProps, Button as ChakraButton } from '@chakra-ui/react'
+import { Button as ChakraButton, type ButtonProps, type SystemStyleObject } from '@chakra-ui/react'
 
 import { forwardRef } from 'react'
 import { pxToRem } from '@/utils'
 
 export interface GovUKButtonProps extends Omit<ButtonProps, 'variant'> {
-  variant?: 'brand' | 'secondary' | 'error' | 'inverse' | 'link'
+  variant?: 'primary' | 'secondary' | 'error' | 'inverse' | 'link'
   showArrow?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
   ({ variant = 'primary', children, showArrow, ...props }, ref) => {
-    const focusStyles: ButtonProps = {
+    const focusStyles: SystemStyleObject = {
       outline: 'none',
       bgColor: 'yellow.500',
       color: 'grey.950',
     }
 
-    const variantStyles: Record<NonNullable<GovUKButtonProps['variant']>, ButtonProps> = {
+    const variantStyles: Record<NonNullable<GovUKButtonProps['variant']>, SystemStyleObject> = {
       primary: {
         bgColor: 'green.500',
         color: 'white',

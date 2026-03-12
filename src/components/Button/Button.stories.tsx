@@ -18,13 +18,13 @@ export const Default: Story = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['brand', 'secondary', 'error', 'inverse', 'link'],
+      options: ['primary', 'secondary', 'error', 'inverse', 'link'],
     },
     showArrow: { control: 'boolean' },
   },
   args: {
     children: 'Start now',
-    variant: 'brand',
+    variant: 'primary',
     showArrow: false,
   },
 }
@@ -32,7 +32,7 @@ export const Default: Story = {
 export const AllVariants: Story = {
   render: () => (
     <Stack gap={4}>
-      <Button variant="brand">Primary (GOV.UK style)</Button>
+      <Button variant="primary">Primary (GOV.UK style)</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="error">Error</Button>
       <Button variant="inverse">Inverse</Button>

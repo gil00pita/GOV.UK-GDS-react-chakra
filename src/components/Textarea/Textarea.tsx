@@ -15,6 +15,7 @@ export interface TextAreaProps extends Omit<TextareaProps, 'size'> {
   error?: ReactNode
   labelSize?: 19 | 24
   formProps?: Omit<FieldRootProps, 'children' | 'invalid'>
+  invalid?: boolean
 }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
