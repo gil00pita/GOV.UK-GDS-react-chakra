@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextArea } from './Textarea'
+import { Textarea } from './Textarea'
 
-const meta: Meta<typeof TextArea> = {
+const meta: Meta<typeof Textarea> = {
   title: 'GOV.UK/Components/Textarea',
-  component: TextArea,
+  component: Textarea,
   parameters: {
     layout: 'centered',
   },
@@ -34,7 +34,7 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
   render: () => (
-    <TextArea
+    <Textarea
       label="Describe the issue"
       hint="Include what happened and when it happened."
       placeholder="Enter details"
@@ -45,7 +45,7 @@ export const WithLabel: Story = {
 
 export const Error: Story = {
   render: () => (
-    <TextArea
+    <Textarea
       label="Describe the problem"
       error="Enter a description of the problem"
       placeholder="Describe what went wrong"
@@ -56,7 +56,7 @@ export const Error: Story = {
 
 export const CharacterCount: Story = {
   render: () => (
-    <TextArea
+    <Textarea
       label="Why do you need this service?"
       hint="You can enter up to 200 characters."
       placeholder="Enter your answer"

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextInput } from './TextInput'
+import { Textinput } from './Textinput'
 import { VStack } from '@chakra-ui/react'
 
-const meta: Meta<typeof TextInput> = {
-  title: 'GOV.UK/Components/TextInput',
-  component: TextInput,
+const meta: Meta<typeof Textinput> = {
+  title: 'GOV.UK/Components/Text input',
+  component: Textinput,
   parameters: {
     layout: 'centered',
   },
@@ -34,12 +34,12 @@ export const Default: Story = {
 }
 
 export const WithLabel: Story = {
-  render: (args) => <TextInput {...args} label="Full name" placeholder="Enter your full name" />,
+  render: (args) => <Textinput {...args} label="Full name" placeholder="Enter your full name" />,
 }
 
 export const Error: Story = {
   render: () => (
-    <TextInput
+    <Textinput
       label="Postcode"
       hint="Enter a UK postcode"
       error="Enter a postcode, like SW1A 1AA"
@@ -52,10 +52,10 @@ export const Error: Story = {
 export const Sizes: Story = {
   render: () => (
     <VStack gap={4} align="stretch" width="300px">
-      <TextInput label="2 character width" width="2" defaultValue="AB" />
-      <TextInput label="4 character width" width="4" defaultValue="2026" />
-      <TextInput label="10 character width" width="10" defaultValue="SW1A 1AA" />
-      <TextInput label="20 character width" width="20" defaultValue="QQ 12 34 56 C" />
+      <Textinput label="2 character width" width="2" defaultValue="AB" />
+      <Textinput label="4 character width" width="4" defaultValue="2026" />
+      <Textinput label="10 character width" width="10" defaultValue="SW1A 1AA" />
+      <Textinput label="20 character width" width="20" defaultValue="QQ 12 34 56 C" />
     </VStack>
   ),
 }

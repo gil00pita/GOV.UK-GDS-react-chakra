@@ -1,11 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Radio } from './Radio'
+import { VStack } from '@chakra-ui/react'
 
 const meta: Meta = {
   title: 'GOV.UK/Components/Radio',
   tags: ['autodocs'],
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the radio component to allow users to select one option from a set of choices.\n\n' +
+          'The radio component can be used in forms and surveys where a single choice is required. It supports hints and error messages to guide users and provide feedback.\n\n' +
+          'For GOV.UK guidance, see the GOV.UK Design System radio documentation: https://design-system.service.gov.uk/components/radios/.',
+      },
+    },
+  },
 }
 
 export default meta
@@ -13,7 +24,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <Radio.Group legend="Where do you live?" hint="Select one option">
+    <Radio.Group legend="Where do you live?" hint="Select one option" legendAsHeading>
       <Radio.Root defaultValue="england" name="where-do-you-live">
         <Radio.Item value="england">
           <Radio.ItemHiddenInput />
@@ -56,6 +67,7 @@ export const WithHints: Story = {
     <Radio.Group
       legend="How do you want to sign in?"
       hint="Choose the option you normally use to access your account."
+      legendAsHeading
     >
       <Radio.Root defaultValue="government-gateway" name="sign-in-method">
         <Radio.Item
@@ -86,7 +98,11 @@ export const WithHints: Story = {
 
 export const Error: Story = {
   render: () => (
-    <Radio.Group legend="Do you have a UK passport?" error="Select whether you have a UK passport">
+    <Radio.Group
+      legend="Do you have a UK passport?"
+      error="Select whether you have a UK passport"
+      legendAsHeading
+    >
       <Radio.Root name="passport-question">
         <Radio.Item value="yes">
           <Radio.ItemHiddenInput />

@@ -52,8 +52,10 @@ export const Radio = {
       <RadioItemPrimitive
         ref={ref}
         display="flex"
+        flexWrap="wrap"
         alignItems="flex-start"
-        gap={pxToRem(15)}
+        columnGap={pxToRem(15)}
+        rowGap={0}
         py={0}
         mb={pxToRem(10)}
         cursor="pointer"
@@ -68,7 +70,11 @@ export const Radio = {
         {...props}
       >
         {children}
-        {hint ? <Radio.Hint>{hint}</Radio.Hint> : null}
+        {hint ? (
+          <Box flexBasis="100%" pl={pxToRem(55)}>
+            <Radio.Hint>{hint}</Radio.Hint>
+          </Box>
+        ) : null}
       </RadioItemPrimitive>
     )
   }),
@@ -118,14 +124,32 @@ export const Radio = {
     return (
       <ChakraRadioGroup.ItemIndicator
         ref={ref}
-        bg="common.black"
+        className="check-indicator"
+        bg="transparent"
         borderRadius="full"
+        borderColor="transparent"
+        borderWidth={0}
         width={pxToRem(18)}
         height={pxToRem(18)}
         position="absolute"
         top="50%"
         left="50%"
         transform="translate(-50%, -50%)"
+        transition="background-color 0.2s ease, border-color 0.2s ease"
+        // _selected={{
+        //   bg: 'common.black',
+        //   borderColor: 'common.black',
+        // }}
+        css={{
+          '&[data-state=checked]': {
+            bg: 'common.black',
+            color: 'common.black',
+          },
+          '[data-state=checked] &': {
+            bg: 'common.black',
+            color: 'common.black',
+          },
+        }}
         {...props}
       />
     )
@@ -181,7 +205,7 @@ export const Radio = {
       >
         <Box as="legend" mb={hint || error ? 1 : 3} float="left" width="100%">
           {legendAsHeading ? (
-            <Heading as="h1" size={36}>
+            <Heading as="h1" fontWeight={700} size={36}>
               {legend}
             </Heading>
           ) : (
@@ -190,18 +214,29 @@ export const Radio = {
         </Box>
 
         {hint ? (
-          <Text fontSize={19} color="fg.muted" mb={3}>
+          <Text fontSize={19} color="fg.muted" mb={3} clear="left">
             {hint}
           </Text>
         ) : null}
 
         {error ? (
-          <Text fontSize={19} fontWeight="700" color="danger" mb={3}>
+          <Text
+            fontSize={19}
+            fontWeight="700"
+            color="danger"
+            mb={3}
+            clear={!hint ? 'left' : undefined}
+          >
             {`Error: ${error}`}
           </Text>
         ) : null}
 
-        <Box display="flex" flexDirection="column" gap={0}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={0}
+          clear={!hint && !error ? 'left' : undefined}
+        >
           {children}
         </Box>
       </Box>

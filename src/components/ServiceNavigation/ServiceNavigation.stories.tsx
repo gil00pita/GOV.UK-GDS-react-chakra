@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box } from '@chakra-ui/react'
 
+import { Box } from '@chakra-ui/react'
 import { ServiceNavigation } from './ServiceNavigation'
 
 const meta: Meta = {
-  title: 'GOV.UK/Components/ServiceNavigation',
+  title: 'GOV.UK/Components/Service navigation',
   parameters: {
     layout: 'fullscreen',
   },

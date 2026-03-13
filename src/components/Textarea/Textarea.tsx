@@ -9,7 +9,7 @@ import { forwardRef, useId, type ReactNode } from 'react'
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
 
-export interface TextAreaProps extends Omit<TextareaProps, 'size'> {
+export interface TextareaProps extends Omit<TextareaProps, 'size'> {
   label?: ReactNode
   hint?: ReactNode
   error?: ReactNode
@@ -18,7 +18,7 @@ export interface TextAreaProps extends Omit<TextareaProps, 'size'> {
   invalid?: boolean
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
   {
     id,
     label,
