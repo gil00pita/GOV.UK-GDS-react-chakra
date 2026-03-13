@@ -2,6 +2,7 @@ import { Tabs as ChakraTabs } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
 import { pxToRem } from '@/utils'
+import { Text } from '../Text'
 
 export interface TabsItem {
   value: string
@@ -56,67 +57,79 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(function TabsList(pro
       ref={ref}
       gap={0}
       bg="transparent"
-      borderBottom="1px solid"
-      borderColor="grey.100"
+      borderBottom="opx solid"
+      borderColor="transparent"
       overflowX="auto"
       flexWrap="nowrap"
       minW="0"
+      marginBottom={'-2px'}
       {...props}
     />
   )
 })
 
-const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
-  function TabsTrigger(props, ref) {
-    return (
-      <ChakraTabs.Trigger
-        ref={ref}
-        borderRadius="0"
-        bg="grey.50"
-        color="brand.500"
-        borderWidth="1px"
-        borderStyle="solid"
-        borderColor="grey.100"
-        borderBottom="none"
-        mt={pxToRem(8)}
-        mr={pxToRem(4)}
-        px={pxToRem(20)}
-        py={pxToRem(10)}
-        fontSize={pxToRem(19)}
-        lineHeight={pxToRem(25)}
-        fontWeight="400"
-        whiteSpace="nowrap"
-        textDecoration="underline"
-        textUnderlineOffset="0.1578em"
-        textDecorationThickness="max(1px, 0.0625rem)"
-        _hover={{
-          color: 'brand.700',
-          textDecorationThickness: 'max(3px, 0.1875rem)',
-        }}
-        _selected={{
-          bg: 'common.white',
-          color: 'grey.950',
-          textDecoration: 'none',
-          fontWeight: '700',
-          mt: 0,
-          pt: pxToRem(18),
-          borderColor: 'grey.100',
-          borderBottom: '1px solid',
-          borderBottomColor: 'common.white',
-        }}
-        _focusVisible={{
-          outline: '3px solid',
-          outlineColor: 'yellow.500',
-          outlineOffset: 0,
-          bg: 'yellow.500',
-          color: 'common.black',
-          textDecorationThickness: 'max(3px, 0.1875rem)',
-        }}
-        {...props}
-      />
-    )
-  }
-)
+const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(function TabsTrigger(
+  { children, ...props },
+  ref
+) {
+  return (
+    <ChakraTabs.Trigger
+      ref={ref}
+      borderRadius="0"
+      bg="grey.50"
+      color="fg"
+      borderWidth="1px"
+      borderStyle="solid"
+      borderColor="grey.100"
+      h={'unset'}
+      mt={pxToRem(8)}
+      mr={pxToRem(4)}
+      mb={pxToRem(4)}
+      px={pxToRem(20)}
+      py={pxToRem(10)}
+      whiteSpace="nowrap"
+      textDecoration="underline"
+      textUnderlineOffset="0.1578em"
+      textDecorationThickness="max(1px, 0.0625rem)"
+      _before={{
+        bgColor: 'transparent',
+      }}
+      _hover={{
+        textDecorationThickness: 'max(3px, 0.1875rem)',
+      }}
+      _selected={{
+        pt: pxToRem(14),
+        pb: pxToRem(16),
+        mb: 0,
+        bg: 'common.white',
+        color: 'fg',
+        textDecoration: 'none',
+        fontWeight: '700',
+        mt: 0,
+        // pt: pxToRem(18),
+        borderColor: 'grey.100',
+        borderBottom: '1px solid',
+        borderBottomColor: 'transparent',
+      }}
+      _focusVisible={{
+        outline: 'none',
+        // outlineColor: 'yellow.500',
+        outlineOffset: 0,
+        bg: 'yellow.500',
+        color: 'common.black',
+        textDecorationThickness: 'max(3px, 0.1875rem)',
+        '& .label': {
+          bgColor: 'focus',
+        },
+      }}
+      {...props}
+    >
+      <Text fontSize={19} fontWeight="400" className="label">
+        {children}
+      </Text>
+    </ChakraTabs.Trigger>
+  )
+})
 
 const TabsContent = forwardRef<HTMLDivElement, TabsContentProps>(function TabsContent(props, ref) {
   return (
