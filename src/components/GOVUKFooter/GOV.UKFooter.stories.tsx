@@ -125,7 +125,7 @@ export const Default: Story = {
                   <svg
                     aria-hidden="true"
                     focusable="false"
-                    class="govuk-footer__licence-logo"
+                    className="licence-logo"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 483.2 195.7"
                     height="17"
@@ -140,7 +140,6 @@ export const Default: Story = {
                 <HStack
                   alignItems={'flex-start'}
                   w={'full'}
-                  justifyContent="space-between"
                   flexWrap="wrap"
                   rowGap={pxToRem(16)}
                   display={{ base: 'none', md: 'flex' }}
