@@ -6,29 +6,29 @@ import { Link } from '@/components/Link'
 import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
 
-export type GovUKFooterProps = BoxProps
+export type GOVUKFooterProps = BoxProps
 
-export type GovUKFooterContainerProps = BoxProps
+export type GOVUKFooterContainerProps = BoxProps
 
-export type GovUKFooterNavigationProps = BoxProps
+export type GOVUKFooterNavigationProps = BoxProps
 
-export type GovUKFooterSectionProps = BoxProps
+export type GOVUKFooterSectionProps = BoxProps
 
-export type GovUKFooterSectionTitleProps = React.ComponentProps<typeof Heading>
+export type GOVUKFooterSectionTitleProps = React.ComponentProps<typeof Heading>
 
-export type GovUKFooterListProps = BoxProps
+export type GOVUKFooterListProps = BoxProps
 
-export type GovUKFooterListItemProps = BoxProps
+export type GOVUKFooterListItemProps = BoxProps
 
-export type GovUKFooterLinkProps = React.ComponentProps<typeof Link>
+export type GOVUKFooterLinkProps = React.ComponentProps<typeof Link>
 
-export type GovUKFooterMetaProps = BoxProps
+export type GOVUKFooterMetaProps = BoxProps
 
-export type GovUKFooterMetaItemProps = BoxProps
+export type GOVUKFooterMetaItemProps = BoxProps
 
-export type GovUKFooterMetaTextProps = React.ComponentProps<typeof Text>
+export type GOVUKFooterMetaTextProps = React.ComponentProps<typeof Text>
 
-const GovUKFooterRoot = forwardRef<HTMLElement, GovUKFooterProps>(function GovUKFooter(props, ref) {
+const GOVUKFooterRoot = forwardRef<HTMLElement, GOVUKFooterProps>(function GOVUKFooter(props, ref) {
   return (
     <Box
       ref={ref}
@@ -37,6 +37,7 @@ const GovUKFooterRoot = forwardRef<HTMLElement, GovUKFooterProps>(function GovUK
       borderColor="brand.500"
       bg="primary.50"
       color="fg"
+      w={'full'}
       mt={pxToRem(60)}
       pt={{ base: pxToRem(40), md: pxToRem(48) }}
       pb={{ base: pxToRem(24), md: pxToRem(32) }}
@@ -45,8 +46,8 @@ const GovUKFooterRoot = forwardRef<HTMLElement, GovUKFooterProps>(function GovUK
   )
 })
 
-const GovUKFooterContainer = forwardRef<HTMLDivElement, GovUKFooterContainerProps>(
-  function GovUKFooterContainer(props, ref) {
+const GOVUKFooterContainer = forwardRef<HTMLDivElement, GOVUKFooterContainerProps>(
+  function GOVUKFooterContainer(props, ref) {
     return (
       <Box
         ref={ref}
@@ -62,8 +63,8 @@ const GovUKFooterContainer = forwardRef<HTMLDivElement, GovUKFooterContainerProp
   }
 )
 
-const GovUKFooterNavigation = forwardRef<HTMLDivElement, GovUKFooterNavigationProps>(
-  function GovUKFooterNavigation(props, ref) {
+const GOVUKFooterNavigation = forwardRef<HTMLDivElement, GOVUKFooterNavigationProps>(
+  function GOVUKFooterNavigation(props, ref) {
     return (
       <Box
         ref={ref}
@@ -86,14 +87,14 @@ const GovUKFooterNavigation = forwardRef<HTMLDivElement, GovUKFooterNavigationPr
   }
 )
 
-const GovUKFooterSection = forwardRef<HTMLDivElement, GovUKFooterSectionProps>(
-  function GovUKFooterSection(props, ref) {
+const GOVUKFooterSection = forwardRef<HTMLDivElement, GOVUKFooterSectionProps>(
+  function GOVUKFooterSection(props, ref) {
     return <Box ref={ref} className="footer-column" {...props} />
   }
 )
 
-const GovUKFooterSectionTitle = forwardRef<HTMLHeadingElement, GovUKFooterSectionTitleProps>(
-  function GovUKFooterSectionTitle(props, ref) {
+const GOVUKFooterSectionTitle = forwardRef<HTMLHeadingElement, GOVUKFooterSectionTitleProps>(
+  function GOVUKFooterSectionTitle(props, ref) {
     return (
       <Heading
         ref={ref}
@@ -107,8 +108,8 @@ const GovUKFooterSectionTitle = forwardRef<HTMLHeadingElement, GovUKFooterSectio
   }
 )
 
-const GovUKFooterList = forwardRef<HTMLUListElement, GovUKFooterListProps>(
-  function GovUKFooterList(props, ref) {
+const GOVUKFooterList = forwardRef<HTMLUListElement, GOVUKFooterListProps>(
+  function GOVUKFooterList(props, ref) {
     return (
       <Box
         ref={ref}
@@ -124,20 +125,20 @@ const GovUKFooterList = forwardRef<HTMLUListElement, GovUKFooterListProps>(
   }
 )
 
-const GovUKFooterListItem = forwardRef<HTMLLIElement, GovUKFooterListItemProps>(
-  function GovUKFooterListItem(props, ref) {
+const GOVUKFooterListItem = forwardRef<HTMLLIElement, GOVUKFooterListItemProps>(
+  function GOVUKFooterListItem(props, ref) {
     return <Box ref={ref} as="li" m={0} p={0} {...props} />
   }
 )
 
-const GovUKFooterLink = forwardRef<HTMLAnchorElement, GovUKFooterLinkProps>(
-  function GovUKFooterLink(props, ref) {
-    return <Link ref={ref} fontSize={16} color="grey.950" lineHeight={pxToRem(20)} {...props} />
+const GOVUKFooterLink = forwardRef<HTMLAnchorElement, GOVUKFooterLinkProps>(
+  function GOVUKFooterLink(props, ref) {
+    return <Link ref={ref} fontSize={16} lineHeight={pxToRem(20)} {...props} />
   }
 )
 
-const GovUKFooterMeta = forwardRef<HTMLDivElement, GovUKFooterMetaProps>(
-  function GovUKFooterMeta(props, ref) {
+const GOVUKFooterMeta = forwardRef<HTMLDivElement, GOVUKFooterMetaProps>(
+  function GOVUKFooterMeta(props, ref) {
     return (
       <Box
         ref={ref}
@@ -153,8 +154,8 @@ const GovUKFooterMeta = forwardRef<HTMLDivElement, GovUKFooterMetaProps>(
   }
 )
 
-const GovUKFooterMetaItem = forwardRef<HTMLDivElement, GovUKFooterMetaItemProps>(
-  function GovUKFooterMetaItem(props, ref) {
+const GOVUKFooterMetaItem = forwardRef<HTMLDivElement, GOVUKFooterMetaItemProps>(
+  function GOVUKFooterMetaItem(props, ref) {
     return (
       <Box
         ref={ref}
@@ -171,8 +172,8 @@ const GovUKFooterMetaItem = forwardRef<HTMLDivElement, GovUKFooterMetaItemProps>
   }
 )
 
-const GovUKFooterMetaText = forwardRef<HTMLParagraphElement, GovUKFooterMetaTextProps>(
-  function GovUKFooterMetaText(props, ref) {
+const GOVUKFooterMetaText = forwardRef<HTMLParagraphElement, GOVUKFooterMetaTextProps>(
+  function GOVUKFooterMetaText(props, ref) {
     return (
       <Text
         ref={ref}
@@ -188,30 +189,30 @@ const GovUKFooterMetaText = forwardRef<HTMLParagraphElement, GovUKFooterMetaText
   }
 )
 
-export const GovUKFooter = Object.assign(GovUKFooterRoot, {
-  Root: GovUKFooterRoot,
-  Container: GovUKFooterContainer,
-  Navigation: GovUKFooterNavigation,
-  Section: GovUKFooterSection,
-  SectionTitle: GovUKFooterSectionTitle,
-  List: GovUKFooterList,
-  ListItem: GovUKFooterListItem,
-  Link: GovUKFooterLink,
-  Meta: GovUKFooterMeta,
-  MetaItem: GovUKFooterMetaItem,
-  MetaText: GovUKFooterMetaText,
+export const GOVUKFooter = Object.assign(GOVUKFooterRoot, {
+  Root: GOVUKFooterRoot,
+  Container: GOVUKFooterContainer,
+  Navigation: GOVUKFooterNavigation,
+  Section: GOVUKFooterSection,
+  SectionTitle: GOVUKFooterSectionTitle,
+  List: GOVUKFooterList,
+  ListItem: GOVUKFooterListItem,
+  Link: GOVUKFooterLink,
+  Meta: GOVUKFooterMeta,
+  MetaItem: GOVUKFooterMetaItem,
+  MetaText: GOVUKFooterMetaText,
 })
 
 export {
-  GovUKFooterRoot,
-  GovUKFooterContainer,
-  GovUKFooterNavigation,
-  GovUKFooterSection,
-  GovUKFooterSectionTitle,
-  GovUKFooterList,
-  GovUKFooterListItem,
-  GovUKFooterLink,
-  GovUKFooterMeta,
-  GovUKFooterMetaItem,
-  GovUKFooterMetaText,
+  GOVUKFooterRoot,
+  GOVUKFooterContainer,
+  GOVUKFooterNavigation,
+  GOVUKFooterSection,
+  GOVUKFooterSectionTitle,
+  GOVUKFooterList,
+  GOVUKFooterListItem,
+  GOVUKFooterLink,
+  GOVUKFooterMeta,
+  GOVUKFooterMetaItem,
+  GOVUKFooterMetaText,
 }

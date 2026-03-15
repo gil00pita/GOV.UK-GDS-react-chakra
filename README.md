@@ -7,7 +7,7 @@ It is not a replacement for Chakra. The point is to keep Chakra's composability,
 ## What This Project Is
 
 - A Chakra-based design skin for React applications
-- A set of GOV.UK-flavoured components such as `GovUKHeader`, `GovUKFooter`, `CookieBanner`, `TaskList`, `SummaryList`, and form primitives
+- A set of GOV.UK-flavoured components such as `GOVUKHeader`, `GOVUKFooter`, `CookieBanner`, `TaskList`, `SummaryList`, and form primitives
 - A reusable Chakra system theme exported as `govUkTheme`
 - A package that can be published to a package registry and consumed as a library instead of only being run as a local app
 
@@ -37,13 +37,13 @@ yarn add govuk-chakra @chakra-ui/react @emotion/react @emotion/styled framer-mot
 Wrap your app with the exported provider:
 
 ```tsx
-import { GovUKProvider } from 'govuk-chakra'
+import { GOVUKProvider } from 'govuk-chakra'
 
 export function AppRoot() {
   return (
-    <GovUKProvider>
+    <GOVUKProvider>
       <App />
-    </GovUKProvider>
+    </GOVUKProvider>
   )
 }
 ```
@@ -83,8 +83,8 @@ import {
   Button,
   Link,
   Table,
-  GovUKHeader,
-  GovUKFooter,
+  GOVUKHeader,
+  GOVUKFooter,
   Textinput,
   Separator,
 } from 'govuk-chakra'
@@ -103,14 +103,16 @@ If a component does not have a local wrapper, the Chakra UI export is used as-is
 ## Example
 
 ```tsx
-import { Box, Heading, Button, Text, GovUKHeader } from 'govuk-chakra'
+import { Box, Heading, Button, Text, GOVUKHeader } from 'govuk-chakra'
 
 export function ExamplePage() {
   return (
     <Box>
-      <GovUKHeader />
+      <GOVUKHeader />
       <Heading size={48}>Service title</Heading>
-      <Text fontSize={19}>This page uses Chakra layout primitives and GOV.UK-styled wrappers from the same package.</Text>
+      <Text fontSize={19}>
+        This page uses Chakra layout primitives and GOV.UK-styled wrappers from the same package.
+      </Text>
       <Button>Continue</Button>
     </Box>
   )

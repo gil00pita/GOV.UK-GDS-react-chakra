@@ -50,7 +50,7 @@ const meta: Meta<typeof Accordion> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const GovUkAccordion = () => {
+const AccordionComponent = () => {
   // v3 controlled value: array of string values matching <Accordion.Item value>
   const [value, setValue] = React.useState<string[]>([])
   const allOpen = value.length === sections.length
@@ -180,5 +180,5 @@ const GovUkAccordion = () => {
 }
 
 export const Default: Story = {
-  render: () => <GovUkAccordion />,
+  render: () => <AccordionComponent />,
 }

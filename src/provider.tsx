@@ -3,9 +3,9 @@ import { type PropsWithChildren } from 'react'
 
 import { govUkTheme } from './theme'
 
-export type GovUKProviderProps = Omit<ChakraProviderProps, 'value'> & PropsWithChildren
+export type GOVUKProviderProps = Omit<ChakraProviderProps, 'value'> & PropsWithChildren
 
-export function GovUKProvider({ children, ...props }: GovUKProviderProps) {
+export function GOVUKProvider({ children, ...props }: GOVUKProviderProps) {
   return (
     <ChakraProvider value={govUkTheme} {...props}>
       {children}

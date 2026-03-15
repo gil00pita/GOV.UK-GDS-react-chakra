@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Box } from '@chakra-ui/react'
-import { GovUKHeader } from './GovUKHeader'
+import { GOVUKHeader } from './GOVUKHeader'
 import { pxToRem } from '@/utils'
 
 const meta: Meta = {
@@ -25,8 +25,8 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <GovUKHeader>
-      <GovUKHeader.Container>
+    <GOVUKHeader>
+      <GOVUKHeader.Container>
         <Box
           display="flex"
           flexDirection={{ base: 'column', md: 'row' }}
@@ -34,36 +34,36 @@ export const Default: Story = {
           justifyContent="space-between"
           gap={pxToRem(10)}
         >
-          <GovUKHeader.ProductName href="#" />
-          <GovUKHeader.ServiceName href="#">Passport application</GovUKHeader.ServiceName>
+          <GOVUKHeader.ProductName href="#" />
+          <GOVUKHeader.ServiceName href="#">Passport application</GOVUKHeader.ServiceName>
         </Box>
 
-        <GovUKHeader.Navigation>
-          <GovUKHeader.List>
-            <GovUKHeader.ListItem>
-              <GovUKHeader.Link href="#">Home</GovUKHeader.Link>
-            </GovUKHeader.ListItem>
-            <GovUKHeader.ListItem current>
-              <GovUKHeader.Link href="#" current>
+        <GOVUKHeader.Navigation>
+          <GOVUKHeader.List>
+            <GOVUKHeader.ListItem>
+              <GOVUKHeader.Link href="#">Home</GOVUKHeader.Link>
+            </GOVUKHeader.ListItem>
+            <GOVUKHeader.ListItem current>
+              <GOVUKHeader.Link href="#" current>
                 Settings
-              </GovUKHeader.Link>
-            </GovUKHeader.ListItem>
-            <GovUKHeader.ListItem>
-              <GovUKHeader.Link href="#">Sign out</GovUKHeader.Link>
-            </GovUKHeader.ListItem>
-          </GovUKHeader.List>
-        </GovUKHeader.Navigation>
-      </GovUKHeader.Container>
-    </GovUKHeader>
+              </GOVUKHeader.Link>
+            </GOVUKHeader.ListItem>
+            <GOVUKHeader.ListItem>
+              <GOVUKHeader.Link href="#">Sign out</GOVUKHeader.Link>
+            </GOVUKHeader.ListItem>
+          </GOVUKHeader.List>
+        </GOVUKHeader.Navigation>
+      </GOVUKHeader.Container>
+    </GOVUKHeader>
   ),
 }
 
 export const ProductOnly: Story = {
   render: () => (
-    <GovUKHeader>
-      <GovUKHeader.Container>
-        <GovUKHeader.ProductName href="#" />
-      </GovUKHeader.Container>
-    </GovUKHeader>
+    <GOVUKHeader>
+      <GOVUKHeader.Container>
+        <GOVUKHeader.ProductName href="#" />
+      </GOVUKHeader.Container>
+    </GOVUKHeader>
   ),
 }

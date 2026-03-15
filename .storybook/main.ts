@@ -20,6 +20,9 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  features: {
+    viewport: true,
+  },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
