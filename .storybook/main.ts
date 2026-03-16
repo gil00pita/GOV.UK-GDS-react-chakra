@@ -1,17 +1,18 @@
 import type { StorybookConfig } from '@storybook/react-vite'
 import { fileURLToPath } from 'node:url'
 
-const srcPath = (relativePath = '.') => fileURLToPath(new URL(`../src/${relativePath}`, import.meta.url))
+const srcPath = (relativePath = '.') =>
+  fileURLToPath(new URL(`../src/${relativePath}`, import.meta.url))
 
 const config: StorybookConfig = {
   stories: [
     '../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
+  staticDirs: ['../public'],
   addons: [
     '@storybook/addon-docs',
     '@storybook/addon-onboarding',
-    // add other addons as needed
     '@storybook/addon-themes',
     '@storybook/addon-vitest',
     '@storybook/addon-mcp',
@@ -19,6 +20,9 @@ const config: StorybookConfig = {
   framework: {
     name: '@storybook/react-vite',
     options: {},
+  },
+  features: {
+    viewport: true,
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',

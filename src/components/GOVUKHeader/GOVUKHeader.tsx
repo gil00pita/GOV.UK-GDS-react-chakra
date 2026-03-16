@@ -1,31 +1,30 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
-import { forwardRef, type ReactNode } from 'react'
+import { forwardRef } from 'react'
 
-import { Heading } from '../Heading/Heading'
-import { Link } from '../Link/Link'
-import { pxToRem } from '../../utils'
+import { Link } from '@/components/Link'
+import { pxToRem } from '@/utils'
 
-export interface GovUKHeaderProps extends BoxProps {}
+export type GOVUKHeaderProps = BoxProps
 
-export interface GovUKHeaderContainerProps extends BoxProps {}
+export type GOVUKHeaderContainerProps = BoxProps
 
-export interface GovUKHeaderProductNameProps extends React.ComponentProps<typeof Link> {}
+export type GOVUKHeaderProductNameProps = React.ComponentProps<typeof Link>
 
-export interface GovUKHeaderServiceNameProps extends React.ComponentProps<typeof Link> {}
+export type GOVUKHeaderServiceNameProps = React.ComponentProps<typeof Link>
 
-export interface GovUKHeaderNavigationProps extends BoxProps {}
+export type GOVUKHeaderNavigationProps = BoxProps
 
-export interface GovUKHeaderListProps extends BoxProps {}
+export type GOVUKHeaderListProps = BoxProps
 
-export interface GovUKHeaderListItemProps extends BoxProps {
+export type GOVUKHeaderListItemProps = BoxProps & {
   current?: boolean
 }
 
-export interface GovUKHeaderLinkProps extends React.ComponentProps<typeof Link> {
+export interface GOVUKHeaderLinkProps extends React.ComponentProps<typeof Link> {
   current?: boolean
 }
 
-const GovUKHeaderRoot = forwardRef<HTMLElement, GovUKHeaderProps>(function GovUKHeader(props, ref) {
+const GOVUKHeaderRoot = forwardRef<HTMLElement, GOVUKHeaderProps>(function GOVUKHeader(props, ref) {
   return (
     <Box
       ref={ref}
@@ -39,8 +38,8 @@ const GovUKHeaderRoot = forwardRef<HTMLElement, GovUKHeaderProps>(function GovUK
   )
 })
 
-const GovUKHeaderContainer = forwardRef<HTMLDivElement, GovUKHeaderContainerProps>(
-  function GovUKHeaderContainer(props, ref) {
+const GOVUKHeaderContainer = forwardRef<HTMLDivElement, GOVUKHeaderContainerProps>(
+  function GOVUKHeaderContainer(props, ref) {
     return (
       <Box
         ref={ref}
@@ -54,8 +53,8 @@ const GovUKHeaderContainer = forwardRef<HTMLDivElement, GovUKHeaderContainerProp
   }
 )
 
-const GovUKHeaderProductName = forwardRef<HTMLAnchorElement, GovUKHeaderProductNameProps>(
-  function GovUKHeaderProductName(props, ref) {
+const GOVUKHeaderProductName = forwardRef<HTMLAnchorElement, GOVUKHeaderProductNameProps>(
+  function GOVUKHeaderProductName(props, ref) {
     return (
       <Link
         ref={ref}
@@ -92,8 +91,8 @@ const GovUKHeaderProductName = forwardRef<HTMLAnchorElement, GovUKHeaderProductN
   }
 )
 
-const GovUKHeaderServiceName = forwardRef<HTMLAnchorElement, GovUKHeaderServiceNameProps>(
-  function GovUKHeaderServiceName(props, ref) {
+const GOVUKHeaderServiceName = forwardRef<HTMLAnchorElement, GOVUKHeaderServiceNameProps>(
+  function GOVUKHeaderServiceName(props, ref) {
     return (
       <Link
         ref={ref}
@@ -117,8 +116,8 @@ const GovUKHeaderServiceName = forwardRef<HTMLAnchorElement, GovUKHeaderServiceN
   }
 )
 
-const GovUKHeaderNavigation = forwardRef<HTMLDivElement, GovUKHeaderNavigationProps>(
-  function GovUKHeaderNavigation(props, ref) {
+const GOVUKHeaderNavigation = forwardRef<HTMLDivElement, GOVUKHeaderNavigationProps>(
+  function GOVUKHeaderNavigation(props, ref) {
     return (
       <Box
         ref={ref}
@@ -132,8 +131,8 @@ const GovUKHeaderNavigation = forwardRef<HTMLDivElement, GovUKHeaderNavigationPr
   }
 )
 
-const GovUKHeaderList = forwardRef<HTMLUListElement, GovUKHeaderListProps>(
-  function GovUKHeaderList(props, ref) {
+const GOVUKHeaderList = forwardRef<HTMLUListElement, GOVUKHeaderListProps>(
+  function GOVUKHeaderList(props, ref) {
     return (
       <Box
         ref={ref}
@@ -150,16 +149,16 @@ const GovUKHeaderList = forwardRef<HTMLUListElement, GovUKHeaderListProps>(
   }
 )
 
-const GovUKHeaderListItem = forwardRef<HTMLLIElement, GovUKHeaderListItemProps>(
-  function GovUKHeaderListItem({ current = false, ...props }, ref) {
+const GOVUKHeaderListItem = forwardRef<HTMLLIElement, GOVUKHeaderListItemProps>(
+  function GOVUKHeaderListItem({ current = false, ...props }, ref) {
     return (
       <Box ref={ref} as="li" position="relative" fontWeight={current ? '700' : '400'} {...props} />
     )
   }
 )
 
-const GovUKHeaderLink = forwardRef<HTMLAnchorElement, GovUKHeaderLinkProps>(
-  function GovUKHeaderLink({ current = false, ...props }, ref) {
+const GOVUKHeaderLink = forwardRef<HTMLAnchorElement, GOVUKHeaderLinkProps>(
+  function GOVUKHeaderLink({ current = false, ...props }, ref) {
     return (
       <Link
         ref={ref}
@@ -189,24 +188,24 @@ const GovUKHeaderLink = forwardRef<HTMLAnchorElement, GovUKHeaderLinkProps>(
   }
 )
 
-export const GovUKHeader = Object.assign(GovUKHeaderRoot, {
-  Root: GovUKHeaderRoot,
-  Container: GovUKHeaderContainer,
-  ProductName: GovUKHeaderProductName,
-  ServiceName: GovUKHeaderServiceName,
-  Navigation: GovUKHeaderNavigation,
-  List: GovUKHeaderList,
-  ListItem: GovUKHeaderListItem,
-  Link: GovUKHeaderLink,
+export const GOVUKHeader = Object.assign(GOVUKHeaderRoot, {
+  Root: GOVUKHeaderRoot,
+  Container: GOVUKHeaderContainer,
+  ProductName: GOVUKHeaderProductName,
+  ServiceName: GOVUKHeaderServiceName,
+  Navigation: GOVUKHeaderNavigation,
+  List: GOVUKHeaderList,
+  ListItem: GOVUKHeaderListItem,
+  Link: GOVUKHeaderLink,
 })
 
 export {
-  GovUKHeaderRoot,
-  GovUKHeaderContainer,
-  GovUKHeaderProductName,
-  GovUKHeaderServiceName,
-  GovUKHeaderNavigation,
-  GovUKHeaderList,
-  GovUKHeaderListItem,
-  GovUKHeaderLink,
+  GOVUKHeaderRoot,
+  GOVUKHeaderContainer,
+  GOVUKHeaderProductName,
+  GOVUKHeaderServiceName,
+  GOVUKHeaderNavigation,
+  GOVUKHeaderList,
+  GOVUKHeaderListItem,
+  GOVUKHeaderLink,
 }

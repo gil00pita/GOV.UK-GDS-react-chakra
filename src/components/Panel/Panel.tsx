@@ -1,18 +1,18 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
-import { Heading } from '../Heading/Heading'
-import { Text } from '../Text/Text'
-import { pxToRem } from '../../utils'
+import { Heading } from '@/components/Heading'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
 
 export interface PanelProps extends BoxProps {
   heading?: ReactNode
   children?: ReactNode
 }
 
-export interface PanelTitleProps extends React.ComponentProps<typeof Heading> {}
+export type PanelTitleProps = React.ComponentProps<typeof Heading>
 
-export interface PanelBodyProps extends React.ComponentProps<typeof Text> {}
+export type PanelBodyProps = React.ComponentProps<typeof Text>
 
 const PanelRoot = forwardRef<HTMLDivElement, PanelProps>(function Panel(
   { heading, children, ...props },

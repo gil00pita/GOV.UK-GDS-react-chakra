@@ -1,6 +1,6 @@
 import { Card, CardGroup } from '@/components/Card/Card'
 import { HStack, VStack } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button } from '@/components/Button/Button'
 import type { CardRootProps } from '@/components/Card/Card'
@@ -14,10 +14,19 @@ interface CardStoryArgs extends CardRootProps {
 }
 
 const meta: Meta<CardStoryArgs> = {
-  title: 'GOV.UK/Components/Card',
+  title: 'Unofficial Components/Card',
   component: Card.Root,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the card component to display content in a structured and visually distinct container.\n\n' +
+          'The card component allows users to group related information, making it easier to scan and understand.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent.\n\n' +
+          'This is an unofficial component from GOV.UK, its been seen in the GOV.UK Education Design System card documentation: https://design.education.gov.uk/design-system/components/card/.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -87,7 +96,7 @@ export const WithLink: Story = {
     <Card.Root maxW="400px" href="https://www.gov.uk/apply-renew-passport">
       <Card.Header>Apply for a passport</Card.Header>
       <Card.Body>
-        You can apply for or renew a British passport if you're a British citizen.
+        You can apply for or renew a British passport if you&apos;re a British citizen.
       </Card.Body>
     </Card.Root>
   ),
@@ -139,7 +148,7 @@ export const WithFooter: Story = {
     <Card.Root maxW="400px" href="https://www.gov.uk/apply-renew-passport">
       <Card.Header>Apply for a passport</Card.Header>
       <Card.Body>
-        You can apply for or renew a British passport if you're a British citizen.
+        You can apply for or renew a British passport if you&apos;re a British citizen.
       </Card.Body>
       <Card.Footer>
         <Button colorPalette="primary">Start application</Button>

@@ -1,9 +1,9 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import { forwardRef, useId, type ReactNode } from 'react'
 
-import { Heading } from '../Heading/Heading'
-import { Text } from '../Text/Text'
-import { pxToRem } from '../../utils'
+import { Heading } from '@/components/Heading'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
 
 export type NotificationBannerVariant = 'info' | 'success'
 
@@ -17,13 +17,13 @@ export interface NotificationBannerHeaderProps extends BoxProps {
   variant?: NotificationBannerVariant
 }
 
-export interface NotificationBannerTitleProps extends React.ComponentProps<typeof Heading> {}
+export type NotificationBannerTitleProps = React.ComponentProps<typeof Heading>
 
-export interface NotificationBannerContentProps extends BoxProps {}
+export type NotificationBannerContentProps = BoxProps
 
-export interface NotificationBannerHeadingProps extends React.ComponentProps<typeof Heading> {}
+export type NotificationBannerHeadingProps = React.ComponentProps<typeof Heading>
 
-export interface NotificationBannerBodyProps extends React.ComponentProps<typeof Text> {}
+export type NotificationBannerBodyProps = React.ComponentProps<typeof Text>
 
 const variantStyles: Record<NotificationBannerVariant, { borderColor: string; headerBg: string }> =
   {

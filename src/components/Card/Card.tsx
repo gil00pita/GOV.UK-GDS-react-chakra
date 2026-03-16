@@ -7,8 +7,8 @@ import {
   type SimpleGridProps,
 } from '@chakra-ui/react'
 import { forwardRef } from 'react'
-import { Text } from '../Text/Text'
-import { Heading } from '../Heading/Heading'
+import { Text } from '@/components/Text'
+import { Heading } from '@/components/Heading'
 
 type HeadingTag = Extract<HeadingProps['as'], 'h2' | 'h3' | 'h4'>
 
@@ -45,15 +45,7 @@ export interface CardProps extends Omit<CardRootProps, 'title'> {
 
 export const Card = {
   Root: forwardRef<HTMLDivElement, CardRootProps>(function CardRoot(
-    {
-      imageSrc,
-      imageAlt,
-      openInNewTab = false,
-      linkCard = true,
-      href,
-      headingType = 'h3' as HeadingTag,
-      ...props
-    },
+    { imageSrc, imageAlt, openInNewTab = false, linkCard = true, href, ...props },
     ref
   ) {
     const hasLink = Boolean(href)
@@ -138,11 +130,11 @@ export const Card = {
     )
   }),
   Header: forwardRef<HTMLDivElement, CardHeaderProps>(function CardHeader(
-    { headingType, ...props },
+    { headingType = 'h2', ...props },
     ref
   ) {
     return (
-      <ChakraCard.Header ref={ref} role="heading" {...props}>
+      <ChakraCard.Header ref={ref} {...props}>
         <Heading
           as={headingType}
           size={24}

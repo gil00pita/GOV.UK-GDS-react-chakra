@@ -1,7 +1,8 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import checker from 'vite-plugin-checker'
+import { ViteMcp } from 'vite-plugin-mcp'
 
 // https://vitejs.dev/config/
 import path from 'node:path'
@@ -11,9 +12,59 @@ import { playwright } from '@vitest/browser-playwright'
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url))
 
+const libraryEntries = {
+  index: path.resolve(dirname, 'src/lib.ts'),
+  chakra: path.resolve(dirname, 'src/govuk-chakra.ts'),
+}
+
+const externalPackages = [
+  'react',
+  'react/jsx-runtime',
+  'react-dom',
+  '@chakra-ui/react',
+  '@emotion/react',
+  '@emotion/styled',
+  'framer-motion',
+]
+
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    checker({
+      typescript: true,
+      eslint: {
+        lintCommand: 'eslint . --no-color',
+        useFlatConfig: true,
+      },
+    }),
+    ViteMcp(),
+  ],
+  publicDir: false,
+  resolve: {
+    tsconfigPaths: true,
+  },
+  build: {
+    lib: {
+      entry: libraryEntries,
+    },
+    rollupOptions: {
+      external: externalPackages,
+      output: [
+        {
+          format: 'es',
+          entryFileNames: '[name].mjs',
+          exports: 'named',
+        },
+        {
+          format: 'cjs',
+          entryFileNames: '[name].cjs',
+          exports: 'named',
+        },
+      ],
+    },
+    sourcemap: true,
+  },
   test: {
     projects: [
       {

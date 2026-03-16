@@ -1,12 +1,20 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Box } from '@chakra-ui/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
+import { Box } from '@chakra-ui/react'
 import { ServiceNavigation } from './ServiceNavigation'
 
 const meta: Meta = {
-  title: 'GOV.UK/Components/ServiceNavigation',
+  title: 'GOV.UK/Components/Service navigation',
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the ServiceNavigation component to provide a consistent navigation experience within a service.\n\n' +
+          'The ServiceNavigation component is useful for guiding users through different sections of a service.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System service navigation documentation: https://design-system.service.gov.uk/components/service-navigation/.',
+      },
+    },
   },
   tags: ['autodocs'],
 }

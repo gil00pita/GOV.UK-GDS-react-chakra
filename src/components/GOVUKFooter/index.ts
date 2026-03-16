@@ -1,0 +1,27 @@
+export {
+  GOVUKFooter,
+  GOVUKFooterContainer,
+  GOVUKFooterLink,
+  GOVUKFooterList,
+  GOVUKFooterListItem,
+  GOVUKFooterMeta,
+  GOVUKFooterMetaItem,
+  GOVUKFooterMetaText,
+  GOVUKFooterNavigation,
+  GOVUKFooterRoot,
+  GOVUKFooterSection,
+  GOVUKFooterSectionTitle,
+} from './GOVUKFooter'
+export type {
+  GOVUKFooterContainerProps,
+  GOVUKFooterLinkProps,
+  GOVUKFooterListItemProps,
+  GOVUKFooterListProps,
+  GOVUKFooterMetaItemProps,
+  GOVUKFooterMetaProps,
+  GOVUKFooterMetaTextProps,
+  GOVUKFooterNavigationProps,
+  GOVUKFooterProps,
+  GOVUKFooterSectionProps,
+  GOVUKFooterSectionTitleProps,
+} from './GOVUKFooter'

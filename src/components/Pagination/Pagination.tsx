@@ -1,16 +1,16 @@
 import { Box, type BoxProps } from '@chakra-ui/react'
 import { forwardRef, type ReactNode } from 'react'
 
-import { Link } from '../Link/Link'
-import { Text } from '../Text/Text'
-import { pxToRem } from '../../utils'
+import { Link } from '@/components/Link'
+import { Text } from '@/components/Text'
+import { pxToRem } from '@/utils'
 
 export interface PaginationProps extends BoxProps {
   landmarkLabel?: string
   block?: boolean
 }
 
-export interface PaginationListProps extends BoxProps {}
+export type PaginationListProps = BoxProps
 
 export interface PaginationItemProps extends BoxProps {
   current?: boolean

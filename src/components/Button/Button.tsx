@@ -1,14 +1,18 @@
-import { Button as ChakraButton, type ButtonProps, type SystemStyleObject } from '@chakra-ui/react'
+import {
+  Button as ChakraButton,
+  type ButtonProps as ChakraButtonProps,
+  type SystemStyleObject,
+} from '@chakra-ui/react'
 
 import { forwardRef } from 'react'
 import { pxToRem } from '@/utils'
 
-export interface GovUKButtonProps extends Omit<ButtonProps, 'variant'> {
+export interface ButtonProps extends Omit<ChakraButtonProps, 'variant'> {
   variant?: 'primary' | 'secondary' | 'error' | 'inverse' | 'link'
   startButton?: boolean
 }
 
-export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', children, startButton, ...props }, ref) => {
     const focusStyles: SystemStyleObject = {
       outline: 'none',
@@ -16,7 +20,7 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
       color: 'grey.950',
     }
 
-    const variantStyles: Record<NonNullable<GovUKButtonProps['variant']>, SystemStyleObject> = {
+    const variantStyles: Record<NonNullable<ButtonProps['variant']>, SystemStyleObject> = {
       primary: {
         bgColor: 'green.500',
         color: 'white',
@@ -44,9 +48,9 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
           _focus: focusStyles,
           _focusVisible: focusStyles,
         },
-        boxShadow: '0 2px 0 var(--govuk-colors-grey-600)',
+        boxShadow: '0 2px 0 var(--govuk-colors-grey-200)',
         _hover: {
-          bgColor: 'grey.300',
+          bgColor: 'grey.100',
           _focus: focusStyles,
           _focusVisible: focusStyles,
         },
@@ -54,7 +58,7 @@ export const Button = forwardRef<HTMLButtonElement, GovUKButtonProps>(
         _focusVisible: focusStyles,
       },
       error: {
-        bgColor: 'red.500',
+        bgColor: 'border.error',
         color: 'white',
         boxShadow: '0 2px 0 var(--govuk-colors-red-800)',
         _hover: {

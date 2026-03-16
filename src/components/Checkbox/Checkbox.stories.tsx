@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Checkbox } from '@/components/Checkbox/Checkbox'
 import { VStack } from '@chakra-ui/react'
 import type { CheckboxProps } from '@/components/Checkbox/Checkbox'
@@ -11,9 +11,16 @@ interface CheckboxStoryArgs extends Omit<CheckboxProps, 'hint'> {
 
 const meta: Meta<CheckboxStoryArgs> = {
   title: 'GOV.UK/Components/Checkbox',
-  component: Checkbox.Root as any,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Use the checkbox component to allow users to select one or more options from a list.\n\n' +
+          'The checkbox component is useful for forms and settings where multiple selections are allowed.\n\n' +
+          'Choose the variant based on the importance and context of the content so the interface stays clear and consistent. For GOV.UK guidance, see the GOV.UK Design System checkbox documentation: https://design-system.service.gov.uk/components/checkboxes/.',
+      },
+    },
   },
   tags: ['autodocs'],
   args: {

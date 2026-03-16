@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { Box, Button, Separator, Stack, Text } from '@chakra-ui/react'
-import type { Meta, StoryObj } from '@storybook/react'
+import { Box, Stack, Text } from '@chakra-ui/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 // Accordion.stories.tsx
 import { Accordion } from '@/components/Accordion/Accordion'
@@ -50,7 +50,7 @@ const meta: Meta<typeof Accordion> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const GovUkAccordion = () => {
+const AccordionComponent = () => {
   // v3 controlled value: array of string values matching <Accordion.Item value>
   const [value, setValue] = React.useState<string[]>([])
   const allOpen = value.length === sections.length
@@ -163,7 +163,7 @@ const GovUkAccordion = () => {
         value={value}
         onValueChange={(details: { value: string[] }) => setValue(details.value)}
       >
-        {sections.map((s, i) => (
+        {sections.map((s) => (
           <Accordion.Item key={s.heading} value={s.heading}>
             <Accordion.Trigger>
               <h2>{s.heading}</h2>
@@ -180,5 +180,5 @@ const GovUkAccordion = () => {
 }
 
 export const Default: Story = {
-  render: () => <GovUkAccordion />,
+  render: () => <AccordionComponent />,
 }
