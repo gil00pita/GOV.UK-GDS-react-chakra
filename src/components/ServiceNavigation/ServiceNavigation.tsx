@@ -1,4 +1,4 @@
-import { Box, Button, HStack, StackProps, type BoxProps } from '@chakra-ui/react'
+import { Box, Button, HStack, Icon, Stack, StackProps, type BoxProps } from '@chakra-ui/react'
 import {
   createContext,
   forwardRef,
@@ -12,6 +12,23 @@ import {
 import { Link } from '@/components/Link'
 import { pxToRem } from '@/utils'
 import { Text } from '../Text'
+
+const MenuCaretIcon = ({ ...props }: ComponentProps<typeof Icon>) => (
+  <Icon
+    as="svg"
+    viewBox="0 0 10 6"
+    flexShrink={0}
+    aria-hidden="true"
+    focusable="false"
+    boxSize={pxToRem(10)}
+    w={pxToRem(10)}
+    h={pxToRem(6)}
+    transition={'transform 0.3s ease'}
+    {...props}
+  >
+    <path d="M0 6 5 0l5 6H0Z" fill="currentColor" />
+  </Icon>
+)
 
 type ServiceNavigationContextValue = {
   isMobileOpen: boolean
@@ -29,6 +46,7 @@ export interface ServiceNavigationRootProps extends StackProps {
   defaultMobileOpen?: boolean
 }
 
+export type ServiceNavigationServiceContainerProps = StackProps
 export type ServiceNavigationServiceNameProps = ComponentProps<typeof Link>
 
 export interface ServiceNavigationNavProps extends BoxProps {
@@ -70,14 +88,23 @@ const ServiceNavigationRoot = forwardRef<HTMLDivElement, ServiceNavigationRootPr
           as="nav"
           width="100%"
           borderBottom="1px solid"
-          borderColor="grey.100"
+          borderColor="primary.200"
           bg="common.white"
           color="fg"
           bgColor={'primary.50'}
           w={'full'}
           {...props}
         >
-          <HStack w={'full'} maxW="1200px" mx="auto" px={{ base: pxToRem(15), md: pxToRem(30) }}>
+          <HStack
+            w={'full'}
+            maxW="1200px"
+            mx="auto"
+            px={{ base: 0, md: pxToRem(30) }}
+            gap={0}
+            alignItems={{ base: 'stretch', md: 'center' }}
+            flexDirection={{ base: 'column', md: 'row' }}
+            flexWrap={'wrap'}
+          >
             {children}
           </HStack>
         </HStack>
@@ -91,11 +118,37 @@ const ServiceNavigationServiceName = forwardRef<
   ServiceNavigationServiceNameProps
 >(function ServiceNavigationServiceName(props, ref) {
   return (
-    <Link ref={ref} display="inline-block" py={pxToRem(15)} mr={pxToRem(30)} noStyle {...props}>
+    <Link
+      ref={ref}
+      display="inline-block"
+      my={pxToRem(10)}
+      mr={pxToRem(30)}
+      px={{ base: pxToRem(15), md: 0 }}
+      noStyle
+      {...props}
+    >
       <Text fontSize={19} lineHeight={1.3157894737} fontWeight="700" as={'span'}>
         {props.children}
       </Text>
     </Link>
+  )
+})
+
+const ServiceNavigationServiceContainer = forwardRef<
+  HTMLDivElement,
+  ServiceNavigationServiceContainerProps
+>(function ServiceNavigationServiceContainer(props, ref) {
+  return (
+    <Stack
+      ref={ref}
+      display={{ base: 'block', md: 'flex' }}
+      alignItems={{ md: 'center' }}
+      justifyContent="space-between"
+      flexShrink={0}
+      {...props}
+    >
+      {props.children}
+    </Stack>
   )
 })
 
@@ -123,9 +176,9 @@ const ServiceNavigationNav = forwardRef<HTMLDivElement, ServiceNavigationNavProp
   }
 )
 
-const ServiceNavigationToggle = forwardRef<HTMLButtonElement, ServiceNavigationToggleProps>(
+const ServiceNavigationToggle = forwardRef<HTMLAnchorElement, ServiceNavigationToggleProps>(
   function ServiceNavigationToggle(
-    { navigationId, openLabel = 'Menu', closedLabel = 'Close menu', children, ...props },
+    { navigationId, openLabel = 'Menu', closedLabel = 'Menu', children, ...props },
     ref
   ) {
     const context = useServiceNavigationContext()
@@ -133,45 +186,36 @@ const ServiceNavigationToggle = forwardRef<HTMLButtonElement, ServiceNavigationT
     const isMobileOpen = context?.isMobileOpen ?? false
 
     return (
-      <Button
-        ref={ref}
-        type="button"
-        variant="plain"
-        display={{ base: 'inline-flex', md: 'none' }}
-        alignItems="center"
-        justifyContent="center"
-        px={0}
-        py={pxToRem(15)}
-        minH="auto"
-        h="auto"
-        fontSize={19}
-        lineHeight={1.3157894737}
-        fontWeight="700"
-        color="brand.500"
-        textDecoration="underline"
-        textUnderlineOffset="0.1578em"
-        textDecorationThickness="max(1px, 0.0625rem)"
-        borderRadius="0"
-        aria-controls={resolvedNavigationId}
-        aria-expanded={isMobileOpen}
-        onClick={() => context?.setIsMobileOpen((current) => !current)}
-        _hover={{
-          color: 'brand.700',
-          textDecorationThickness: 'max(3px, 0.1875rem)',
-          bg: 'transparent',
-        }}
-        _focus={{
-          outline: '3px solid',
-          outlineColor: 'yellow.500',
-          outlineOffset: 0,
-          bg: 'yellow.500',
-          color: 'common.black',
-          textDecorationThickness: 'max(3px, 0.1875rem)',
-        }}
-        {...props}
-      >
-        {children ?? (isMobileOpen ? closedLabel : openLabel)}
-      </Button>
+      <Box display={{ base: 'block', md: 'none' }} w="full" px={{ base: pxToRem(15), md: 0 }}>
+        <Link
+          ref={ref}
+          variant="plain"
+          display={{ base: 'inline-flex', md: 'none' }}
+          justifyContent="flex-start"
+          color={'primary.500'}
+          gap={pxToRem(6)}
+          px={0}
+          aria-controls={resolvedNavigationId}
+          aria-expanded={isMobileOpen}
+          onClick={() => context?.setIsMobileOpen((current) => !current)}
+          href="#"
+          noStyle
+          mb={pxToRem(10)}
+          {...props}
+        >
+          <Text
+            as="span"
+            fontWeight="700"
+            textDecoration="none"
+            color={'currentColor'}
+            fontSize={19}
+          >
+            {children ?? (isMobileOpen ? closedLabel : openLabel)}
+          </Text>
+
+          <MenuCaretIcon transform={isMobileOpen ? 'rotate(180deg)' : undefined} />
+        </Link>
+      </Box>
     )
   }
 )
@@ -179,7 +223,7 @@ const ServiceNavigationToggle = forwardRef<HTMLButtonElement, ServiceNavigationT
 const ServiceNavigationList = forwardRef<HTMLUListElement, ServiceNavigationListProps>(
   function ServiceNavigationList(props, ref) {
     return (
-      <Box
+      <HStack
         ref={ref}
         as="ul"
         listStyleType="none"
@@ -187,6 +231,9 @@ const ServiceNavigationList = forwardRef<HTMLUListElement, ServiceNavigationList
         p={0}
         display={{ base: 'block', md: 'flex' }}
         alignItems={{ md: 'center' }}
+        flexWrap={'wrap'}
+        py={{ base: pxToRem(8), md: 0 }}
+        gap={{ base: 0, md: pxToRem(30) }}
         {...props}
       />
     )
@@ -202,11 +249,24 @@ const ServiceNavigationItem = forwardRef<HTMLLIElement, ServiceNavigationItemPro
         ref={ref}
         as="li"
         position="relative"
-        mr={{ md: pxToRem(30) }}
-        py={{ base: pxToRem(13), md: 0 }}
-        _first={{}}
+        flexShrink={0}
+        py={{ base: pxToRem(5), md: pxToRem(18) }}
         _last={{ mr: { md: 0 } }}
         data-current={isCurrent ? 'true' : 'false'}
+        _after={{
+          content: '""',
+          position: 'absolute',
+          left: 0,
+          top: { base: 'auto', md: 'auto' },
+          height: { base: pxToRem(25), md: pxToRem(4) },
+          bottom: { base: '50%', md: 0 },
+          right: { base: 0, md: 'auto' },
+          width: { base: pxToRem(4), md: '100%' },
+          backgroundColor: 'primary.500',
+          display: isCurrent ? 'block' : 'none',
+          visibility: isCurrent ? 'visible' : 'hidden',
+          transform: { base: 'translateY(50%)', md: 'none' },
+        }}
         {...props}
       />
     )
@@ -223,50 +283,18 @@ const ServiceNavigationLink = forwardRef<HTMLAnchorElement, ServiceNavigationLin
         aria-current={isCurrent ? 'page' : undefined}
         display="inline-block"
         position="relative"
-        py={{ md: pxToRem(18) }}
-        ps={isCurrent ? { base: pxToRem(12), md: 0 } : undefined}
-        textDecoration={'none'}
+        w={{ base: 'full', md: 'auto' }}
+        ps={{ base: pxToRem(15), md: 0 }}
+        textDecoration="none"
         _hover={{
-          color: 'fg',
+          color: 'primary.800',
           textDecoration: 'underline',
-          textDecorationThickness: 'max(3px, 0.1875rem)',
+          textDecorationThickness: pxToRem(3),
+          textUnderlineOffset: pxToRem(3),
         }}
-        _focus={{
-          outline: '3px solid',
-          outlineColor: 'yellow.500',
-          outlineOffset: 0,
-          bgColor: 'yellow.500',
-          color: 'common.black',
-          textDecoration: 'none',
-        }}
-        css={
-          isCurrent
-            ? {
-                '&::after': {
-                  content: '""',
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: pxToRem(4),
-                  backgroundColor: 'brand.500',
-                },
-                '@media screen and (min-width: 48em)': {
-                  '&::after': {
-                    left: 0,
-                    right: 0,
-                    top: 'auto',
-                    bottom: 0,
-                    width: '100%',
-                    height: pxToRem(4),
-                  },
-                },
-              }
-            : undefined
-        }
         {...props}
       >
-        <Text as="span" textDecoration="none">
+        <Text as="span" fontSize={19} textDecoration="none" color={'currentColor'}>
           {props.children}
         </Text>
       </Link>
@@ -277,6 +305,7 @@ const ServiceNavigationLink = forwardRef<HTMLAnchorElement, ServiceNavigationLin
 export const ServiceNavigation = Object.assign(ServiceNavigationRoot, {
   Root: ServiceNavigationRoot,
   ServiceName: ServiceNavigationServiceName,
+  ServiceContainer: ServiceNavigationServiceContainer,
   Nav: ServiceNavigationNav,
   Toggle: ServiceNavigationToggle,
   List: ServiceNavigationList,
@@ -287,6 +316,7 @@ export const ServiceNavigation = Object.assign(ServiceNavigationRoot, {
 export {
   ServiceNavigationRoot,
   ServiceNavigationServiceName,
+  ServiceNavigationServiceContainer,
   ServiceNavigationNav,
   ServiceNavigationToggle,
   ServiceNavigationList,

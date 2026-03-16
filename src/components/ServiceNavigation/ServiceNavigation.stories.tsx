@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Box } from '@chakra-ui/react'
 import { ServiceNavigation } from './ServiceNavigation'
 
 const meta: Meta = {
@@ -25,14 +24,10 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <ServiceNavigation.Root>
-      <Box
-        display={{ base: 'block', md: 'flex' }}
-        alignItems={{ md: 'center' }}
-        justifyContent="space-between"
-      >
+      <ServiceNavigation.ServiceContainer>
         <ServiceNavigation.ServiceName href="#">Apply for a passport</ServiceNavigation.ServiceName>
         <ServiceNavigation.Toggle />
-      </Box>
+      </ServiceNavigation.ServiceContainer>
       <ServiceNavigation.Nav>
         <ServiceNavigation.List>
           <ServiceNavigation.Item current>

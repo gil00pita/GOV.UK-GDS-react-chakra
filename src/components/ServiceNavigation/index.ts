@@ -6,6 +6,7 @@ export {
   ServiceNavigationNav,
   ServiceNavigationRoot,
   ServiceNavigationServiceName,
+  ServiceNavigationServiceContainer,
   ServiceNavigationToggle,
 } from './ServiceNavigation'
 export type {
@@ -15,5 +16,6 @@ export type {
   ServiceNavigationNavProps,
   ServiceNavigationRootProps,
   ServiceNavigationServiceNameProps,
+  ServiceNavigationServiceContainerProps,
   ServiceNavigationToggleProps,
 } from './ServiceNavigation'

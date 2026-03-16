@@ -41,22 +41,25 @@ export const WithServiceName: Story = {
         <GOVUKHeader.Logo href="#" />
       </GOVUKHeader.Container>
       <ServiceNavigation.Root>
-        <ServiceNavigation.ServiceName href="#">eVisa</ServiceNavigation.ServiceName>
+        <ServiceNavigation.ServiceContainer>
+          <ServiceNavigation.ServiceName href="#">Service name</ServiceNavigation.ServiceName>
+          <ServiceNavigation.Toggle />
+        </ServiceNavigation.ServiceContainer>
         <ServiceNavigation.Nav>
           <ServiceNavigation.List>
             <ServiceNavigation.Item current>
               <ServiceNavigation.Link href="#" current>
-                Overview
+                Navigation item 1
               </ServiceNavigation.Link>
             </ServiceNavigation.Item>
             <ServiceNavigation.Item>
-              <ServiceNavigation.Link href="#">Before you start</ServiceNavigation.Link>
+              <ServiceNavigation.Link href="#">Navigation item 2</ServiceNavigation.Link>
             </ServiceNavigation.Item>
             <ServiceNavigation.Item>
-              <ServiceNavigation.Link href="#">Documents</ServiceNavigation.Link>
+              <ServiceNavigation.Link href="#">Navigation item 3</ServiceNavigation.Link>
             </ServiceNavigation.Item>
             <ServiceNavigation.Item>
-              <ServiceNavigation.Link href="#">Pay</ServiceNavigation.Link>
+              <ServiceNavigation.Link href="#">Navigation item 4</ServiceNavigation.Link>
             </ServiceNavigation.Item>
           </ServiceNavigation.List>
         </ServiceNavigation.Nav>

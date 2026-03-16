@@ -10,7 +10,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(({ noStyle, ...prop
   return (
     <ChakraLink
       ref={ref}
-      color={noStyle ? 'inherit' : 'brand.500'}
+      color={noStyle ? 'inherit' : 'brand.600'}
       textDecoration={noStyle ? 'none' : 'underline'}
       textDecorationThickness="max(1px, 0.0625rem)"
       textUnderlineOffset="0.1578em"
