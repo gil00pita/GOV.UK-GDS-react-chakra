@@ -2,19 +2,22 @@ import { Link as ChakraLink, LinkProps as ChakraLinkProps } from '@chakra-ui/rea
 
 import { forwardRef } from 'react'
 
-export type LinkProps = ChakraLinkProps
+export interface LinkProps extends ChakraLinkProps {
+  noStyle?: boolean
+}
 
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(({ noStyle, ...props }, ref) => {
   return (
     <ChakraLink
       ref={ref}
-      color="brand.500"
-      textDecoration="underline"
+      color={noStyle ? 'inherit' : 'brand.500'}
+      textDecoration={noStyle ? 'none' : 'underline'}
       textDecorationThickness="max(1px, 0.0625rem)"
       textUnderlineOffset="0.1578em"
       fontWeight="normal"
       _hover={{
-        color: 'brand.700',
+        color: noStyle ? 'inherit' : 'brand.700',
+        textDecoration: 'underline',
         textDecorationThickness: 'max(3px, 0.1875rem)', // Thicker on hover (GOV.UK style)
       }}
       _focus={{
@@ -25,20 +28,24 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
         color: 'fg',
         textDecoration: 'underline',
         textDecorationThickness: 'max(3px, 0.1875rem)',
+        _hover: {
+          color: noStyle ? 'inherit' : 'fg',
+          textDecorationThickness: 'max(3px, 0.1875rem)',
+        },
       }}
       _visited={{
-        color: 'govuk.darkGrey',
+        color: noStyle ? 'inherit' : 'fg',
       }}
       _dark={{
-        color: 'brand.200',
+        color: noStyle ? 'inherit' : 'brand.200',
         _hover: {
-          color: 'brand.400',
+          color: noStyle ? 'inherit' : 'brand.400',
         },
         _focus: {
-          color: 'fg',
+          color: noStyle ? 'inherit' : 'fg',
         },
         _visited: {
-          color: 'govuk.darkGrey',
+          color: noStyle ? 'inherit' : 'fg',
         },
       }}
       {...props}

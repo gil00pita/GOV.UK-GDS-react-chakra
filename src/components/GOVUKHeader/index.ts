@@ -1,21 +1,13 @@
 export {
   GOVUKHeader,
   GOVUKHeaderContainer,
-  GOVUKHeaderLink,
-  GOVUKHeaderList,
-  GOVUKHeaderListItem,
-  GOVUKHeaderNavigation,
-  GOVUKHeaderProductName,
+  GOVUKHeaderLogo,
+  GOVUKHeaderLogotype,
   GOVUKHeaderRoot,
-  GOVUKHeaderServiceName,
 } from './GOVUKHeader'
 export type {
   GOVUKHeaderContainerProps,
-  GOVUKHeaderLinkProps,
-  GOVUKHeaderListItemProps,
-  GOVUKHeaderListProps,
-  GOVUKHeaderNavigationProps,
-  GOVUKHeaderProductNameProps,
+  GOVUKHeaderLogoProps,
+  GOVUKHeaderLogotypeProps,
   GOVUKHeaderProps,
-  GOVUKHeaderServiceNameProps,
 } from './GOVUKHeader'

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { GOVUKFooter } from './GOVUKFooter'
-import { Box, HStack, Image, LinkBox, LinkOverlay, VStack } from '@chakra-ui/react'
+import { Box, HStack, Image, LinkOverlay, VStack } from '@chakra-ui/react'
 import { pxToRem } from '@/utils'
 import { Link } from '../Link'
 

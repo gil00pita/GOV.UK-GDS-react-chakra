@@ -1,4 +1,4 @@
-import { Box, Button, type BoxProps } from '@chakra-ui/react'
+import { Box, Button, HStack, type BoxProps } from '@chakra-ui/react'
 import {
   createContext,
   forwardRef,
@@ -11,6 +11,7 @@ import {
 
 import { Link } from '@/components/Link'
 import { pxToRem } from '@/utils'
+import { Text } from '../Text'
 
 type ServiceNavigationContextValue = {
   isMobileOpen: boolean
@@ -64,20 +65,22 @@ const ServiceNavigationRoot = forwardRef<HTMLDivElement, ServiceNavigationRootPr
 
     return (
       <ServiceNavigationContext.Provider value={contextValue}>
-        <Box
+        <HStack
           ref={ref}
-          as="section"
+          as="nav"
           width="100%"
           borderBottom="1px solid"
           borderColor="grey.100"
           bg="common.white"
-          color="grey.950"
+          color="fg"
+          bgColor={'primary.50'}
+          w={'full'}
           {...props}
         >
-          <Box maxW="1200px" mx="auto" px={{ base: pxToRem(15), md: pxToRem(30) }}>
+          <HStack w={'full'} maxW="1200px" mx="auto" px={{ base: pxToRem(15), md: pxToRem(30) }}>
             {children}
-          </Box>
-        </Box>
+          </HStack>
+        </HStack>
       </ServiceNavigationContext.Provider>
     )
   }
@@ -88,30 +91,11 @@ const ServiceNavigationServiceName = forwardRef<
   ServiceNavigationServiceNameProps
 >(function ServiceNavigationServiceName(props, ref) {
   return (
-    <Link
-      ref={ref}
-      display="inline-block"
-      fontSize={24}
-      lineHeight={1.25}
-      fontWeight="700"
-      color="grey.950"
-      textDecoration="none"
-      py={pxToRem(15)}
-      _hover={{
-        color: 'grey.950',
-        textDecoration: 'underline',
-        textDecorationThickness: 'max(3px, 0.1875rem)',
-      }}
-      _focus={{
-        outline: '3px solid',
-        outlineColor: 'yellow.500',
-        outlineOffset: 0,
-        bgColor: 'yellow.500',
-        color: 'common.black',
-        textDecoration: 'none',
-      }}
-      {...props}
-    />
+    <Link ref={ref} display="inline-block" py={pxToRem(15)} mr={pxToRem(30)} noStyle {...props}>
+      <Text fontSize={19} lineHeight={1.3157894737} fontWeight="700" as={'span'}>
+        {props.children}
+      </Text>
+    </Link>
   )
 })
 
@@ -127,8 +111,6 @@ const ServiceNavigationNav = forwardRef<HTMLDivElement, ServiceNavigationNavProp
         as="nav"
         id={resolvedId}
         aria-label="Menu"
-        borderTop="1px solid"
-        borderColor="grey.100"
         display={{
           base: collapsible ? (isMobileOpen ? 'block' : 'none') : 'block',
           md: 'block',
@@ -222,9 +204,7 @@ const ServiceNavigationItem = forwardRef<HTMLLIElement, ServiceNavigationItemPro
         position="relative"
         mr={{ md: pxToRem(30) }}
         py={{ base: pxToRem(13), md: 0 }}
-        borderTop="1px solid"
-        borderColor="grey.100"
-        _first={{ borderTop: { md: 'none' } }}
+        _first={{}}
         _last={{ mr: { md: 0 } }}
         data-current={isCurrent ? 'true' : 'false'}
         {...props}
@@ -245,13 +225,9 @@ const ServiceNavigationLink = forwardRef<HTMLAnchorElement, ServiceNavigationLin
         position="relative"
         py={{ md: pxToRem(18) }}
         ps={isCurrent ? { base: pxToRem(12), md: 0 } : undefined}
-        color="grey.950"
-        fontSize={19}
-        lineHeight={1.3157894737}
-        fontWeight={isCurrent ? '700' : '400'}
-        textDecoration="none"
+        textDecoration={'none'}
         _hover={{
-          color: 'grey.950',
+          color: 'fg',
           textDecoration: 'underline',
           textDecorationThickness: 'max(3px, 0.1875rem)',
         }}
@@ -289,7 +265,11 @@ const ServiceNavigationLink = forwardRef<HTMLAnchorElement, ServiceNavigationLin
             : undefined
         }
         {...props}
-      />
+      >
+        <Text as="span" textDecoration="none">
+          {props.children}
+        </Text>
+      </Link>
     )
   }
 )
