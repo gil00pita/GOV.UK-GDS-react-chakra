@@ -4,6 +4,8 @@
 
 It is not a replacement for Chakra. The point is to keep Chakra's composability, theme system, and React ergonomics, while shipping a set of opinionated components and tokens that feel closer to the GOV.UK Design System.
 
+![Screenshot](public/screenshot.png)
+
 ## What This Project Is
 
 - A Chakra-based design skin for React applications
