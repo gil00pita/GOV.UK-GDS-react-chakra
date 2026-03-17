@@ -87,6 +87,12 @@ const govUkThemeConfig = defineConfig({
             _dark: '{colors.grey.600}',
           },
         },
+        'border.subtle': {
+          value: {
+            base: '{colors.grey.200}',
+            _dark: '{colors.grey.700}',
+          },
+        },
         'border.error': {
           value: {
             base: '{colors.red.500}',

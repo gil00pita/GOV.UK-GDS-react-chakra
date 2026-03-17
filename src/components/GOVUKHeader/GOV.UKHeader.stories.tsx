@@ -71,6 +71,46 @@ export const WithServiceName: Story = {
   ),
 }
 
+export const WithBreadcrumbs: Story = {
+  render: () => (
+    <GOVUKHeader>
+      <GOVUKHeader.Container>
+        <GOVUKHeader.Logo href="#" />
+      </GOVUKHeader.Container>
+      <VStack
+        className="app-container-wrapper"
+        maxW="1200px"
+        paddingTop={{ base: '30px', md: '15px' }}
+        paddingBottom={{ base: '50px', md: '20px' }}
+        marginLeft="auto"
+        marginRight="auto"
+        width="100%"
+        px={{ base: pxToRem(15), md: pxToRem(30) }}
+      >
+        <Breadcrumbs w="full">
+          <Breadcrumbs.List>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Home</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Passports, travel and living abroad</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Travel abroad</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Link href="#">Foreign travel advice</Breadcrumbs.Link>
+            </Breadcrumbs.Item>
+            <Breadcrumbs.Item current>
+              <Breadcrumbs.Current>Spain</Breadcrumbs.Current>
+            </Breadcrumbs.Item>
+          </Breadcrumbs.List>
+        </Breadcrumbs>
+      </VStack>
+    </GOVUKHeader>
+  ),
+}
+
 export const WithServiceNameAndBreadcrumbs: Story = {
   render: () => (
     <GOVUKHeader>

@@ -79,7 +79,7 @@ const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function
       display="inline-flex"
       alignItems="center"
       position="relative"
-      pe={pxToRem(10)}
+      pe={pxToRem(5)}
       // me={pxToRem(10)}
       // mb={pxToRem(5)}
       css={{
@@ -96,7 +96,7 @@ const BreadcrumbsItem = forwardRef<HTMLLIElement, BreadcrumbsItemProps>(function
           transform: 'translateY(-50%) rotate(-45deg)',
           borderRight: '1px solid',
           borderBottom: '1px solid',
-          borderColor: inverse ? 'fg.inverted' : 'fg',
+          borderColor: inverse ? 'common.white' : 'border.subtle',
         },
       }}
       aria-current={current ? 'page' : undefined}
