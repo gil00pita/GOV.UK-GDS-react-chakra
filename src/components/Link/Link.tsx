@@ -15,6 +15,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(({ noStyle, ...prop
       textDecorationThickness="max(1px, 0.0625rem)"
       textUnderlineOffset="0.1578em"
       fontWeight="normal"
+      fontFamily="body"
       _hover={{
         color: noStyle ? 'inherit' : 'brand.700',
         textDecoration: 'underline',

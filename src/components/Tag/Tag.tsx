@@ -15,15 +15,18 @@ export type TagVariant =
   | 'orange'
   | 'yellow'
 
+export type TagVariantStyles = Record<string, SystemStyleObject>
+
 export interface TagProps extends Omit<BoxProps, 'color'> {
   children: ReactNode
-  variant?: TagVariant
+  variant?: TagVariant | string
   bold?: boolean
   uppercase?: boolean
+  variantStyles?: TagVariantStyles
 }
 
-const variantStyles: Record<TagVariant, SystemStyleObject> = {
-  grey: { bg: 'grey.100', color: 'grey.950', _dark: { bg: 'grey.950', color: 'grey.100' } },
+export const defaultTagVariantStyles: Record<TagVariant, SystemStyleObject> = {
+  grey: { bg: 'grey.50', color: 'grey.950', _dark: { bg: 'grey.950', color: 'grey.100' } },
   green: { bg: 'green.100', color: 'green.900', _dark: { bg: 'green.900', color: 'green.100' } },
   teal: { bg: 'teal.100', color: 'teal.900', _dark: { bg: 'teal.900', color: 'teal.100' } },
   blue: { bg: 'brand.100', color: 'brand.900', _dark: { bg: 'brand.900', color: 'brand.100' } },
@@ -51,22 +54,26 @@ const variantStyles: Record<TagVariant, SystemStyleObject> = {
 }
 
 export const Tag = forwardRef<HTMLParagraphElement, TagProps>(function Tag(
-  { children, bold, uppercase, variant = 'grey', ...props },
+  { children, bold, uppercase, variant = 'grey', variantStyles, ...props },
   ref
 ) {
+  const mergedVariantStyles: TagVariantStyles = {
+    ...defaultTagVariantStyles,
+    ...variantStyles,
+  }
+
   return (
     <Text
       ref={ref}
       fontSize={19}
       display="inline-block"
-      pt={pxToRem(2)}
       px={pxToRem(8)}
-      pb={pxToRem(3)}
+      py={pxToRem(5)}
       borderRadius={pxToRem(2)}
       fontWeight={bold ? '700' : '400'}
       letterSpacing={pxToRem(0.5)}
       textTransform={uppercase ? 'uppercase' : 'none'}
-      {...variantStyles[variant]}
+      {...mergedVariantStyles[variant]}
       {...props}
     >
       {children}

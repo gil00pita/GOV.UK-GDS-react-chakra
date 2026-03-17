@@ -19,6 +19,17 @@ const meta: Meta<typeof WarningText> = {
   tags: ['autodocs'],
   args: {
     children: 'You can be fined up to \u00a35,000 if you do not register.',
+    iconText: '!',
+    assistiveText: 'Warning',
+    iconProps: {
+      'aria-hidden': true,
+    },
+  },
+  argTypes: {
+    children: { control: 'text' },
+    iconText: { control: 'text' },
+    assistiveText: { control: 'text' },
+    iconProps: { control: 'object' },
   },
 }
 

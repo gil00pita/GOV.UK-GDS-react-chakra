@@ -112,29 +112,30 @@ export const Textarea = {
         resize="vertical"
         borderRadius="0"
         borderWidth={pxToRem(2)}
-        borderColor="grey.950"
+        fontFamily="body"
+        borderColor="border.input"
         bg="common.white"
-        color="grey.950"
+        color="fg"
         fontSize={pxToRem(19)}
         lineHeight={pxToRem(25)}
         px={pxToRem(12)}
         py={pxToRem(8)}
         w="100%"
-        _placeholder={{ color: 'grey.400', opacity: 1 }}
+        _placeholder={{ color: 'fg.muted', opacity: 1 }}
         _hover={{ borderColor: 'common.black' }}
         _focusVisible={{
           outline: `${pxToRem(3)} solid`,
           outlineColor: 'yellow.500',
           outlineOffset: '0',
-          borderColor: 'common.black',
-          boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
+          borderColor: 'border.input',
+          boxShadow: 'inset 0 0 0 2px var(--chakra-colors-border-input)',
         }}
         _invalid={{ borderColor: 'red.500' }}
         _disabled={{
           opacity: 1,
           cursor: 'not-allowed',
-          color: 'grey.700',
-          bg: 'grey.100',
+          color: 'fg.muted',
+          bg: 'bg.muted',
         }}
         {...props}
       />

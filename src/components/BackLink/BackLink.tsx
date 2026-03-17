@@ -1,9 +1,9 @@
-import { Link as ChakraLink, type LinkProps as ChakraLinkProps } from '@chakra-ui/react'
-import { forwardRef } from 'react'
+import { Link, LinkProps } from '../Link'
 
+import { forwardRef } from 'react'
 import { pxToRem } from '@/utils'
 
-export interface BackLinkProps extends ChakraLinkProps {
+export interface BackLinkProps extends LinkProps {
   inverse?: boolean
 }
 
@@ -13,7 +13,7 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
     const hoverColor = inverse ? 'common.white' : 'brand.700'
 
     return (
-      <ChakraLink
+      <Link
         ref={ref}
         href={href}
         display="inline-flex"
@@ -59,7 +59,7 @@ export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
           <path fill="currentColor" d="M10.5 1-1 7l11.5 6V8h7V6h-7V1z" transform="translate(1 0)" />
         </svg>
         {children}
-      </ChakraLink>
+      </Link>
     )
   }
 )

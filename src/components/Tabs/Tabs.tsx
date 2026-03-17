@@ -76,11 +76,11 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(function Tab
     <ChakraTabs.Trigger
       ref={ref}
       borderRadius="0"
-      bg="grey.50"
+      bg="bg.subtle"
       color="fg"
       borderWidth="1px"
       borderStyle="solid"
-      borderColor="grey.100"
+      borderColor="border"
       h={'unset'}
       mt={pxToRem(8)}
       mr={pxToRem(4)}

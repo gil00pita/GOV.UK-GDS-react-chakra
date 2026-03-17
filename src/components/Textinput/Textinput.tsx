@@ -115,9 +115,10 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
       ref={ref}
       borderRadius="0"
       borderWidth={pxToRem(2)}
-      borderColor={invalid ? 'red.500' : 'grey.950'}
-      bg="common.white"
-      color="grey.950"
+      borderColor={invalid ? 'red.500' : 'border.input'}
+      fontFamily="body"
+      bg="transparent"
+      color="fg"
       fontSize={pxToRem(19)}
       lineHeight={pxToRem(25)}
       px={pxToRem(12)}
@@ -125,14 +126,14 @@ const TextinputInput = forwardRef<HTMLInputElement, TextinputInputProps>(functio
       h={pxToRem(40)}
       w={width === 'full' ? '100%' : 'auto'}
       maxW={width === 'full' ? undefined : WIDTH_MAX[width]}
-      _placeholder={{ color: 'grey.400', opacity: 1 }}
-      _hover={{ borderColor: invalid ? 'red.500' : 'common.black' }}
+      _placeholder={{ color: 'fg.muted', opacity: 1 }}
+      _hover={{ borderColor: invalid ? 'red.500' : 'border.input' }}
       _focusVisible={{
         outline: `${pxToRem(3)} solid`,
         outlineColor: 'yellow.500',
         outlineOffset: '0',
-        borderColor: 'common.black',
-        boxShadow: 'inset 0 0 0 2px var(--chakra-colors-common-black)',
+        borderColor: 'border.input',
+        boxShadow: 'inset 0 0 0 2px var(--chakra-colors-border-input)',
       }}
       _invalid={{ borderColor: 'red.500' }}
       _disabled={{

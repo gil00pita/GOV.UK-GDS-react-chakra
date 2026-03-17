@@ -7,19 +7,36 @@ import {
   type BoxProps,
   type StackProps,
 } from '@chakra-ui/react'
-import { forwardRef, type ReactNode } from 'react'
+import {
+  Children,
+  createContext,
+  forwardRef,
+  isValidElement,
+  useContext,
+  type ReactNode,
+} from 'react'
 
+import { Tag, type TagVariant } from '@/components/Tag/Tag'
 import { Text } from '@/components/Text/Text'
 import { pxToRem } from '@/utils'
 
-export type TaskStatus = 'completed' | 'incomplete' | 'cannotStartYet' | 'notStarted'
+export type TaskStatus = string
 
-const STATUS_LABEL: Record<TaskStatus, string> = {
-  completed: 'Completed',
-  incomplete: 'Incomplete',
-  cannotStartYet: 'Cannot start yet',
-  notStarted: 'Not started',
+export interface TaskListStatusDefinition {
+  label: ReactNode
+  color: TagVariant
 }
+
+export type TaskListStatuses = Record<string, TaskListStatusDefinition>
+
+const DEFAULT_STATUSES: TaskListStatuses = {
+  completed: { label: 'Completed', color: 'green' },
+  incomplete: { label: 'Incomplete', color: 'blue' },
+  cannotStartYet: { label: 'Cannot start yet', color: 'grey' },
+  notStarted: { label: 'Not started', color: 'blue' },
+}
+
+const TaskListStatusesContext = createContext<TaskListStatuses>(DEFAULT_STATUSES)
 
 export interface TaskListItemData {
   id?: string
@@ -32,6 +49,12 @@ export interface TaskListItemData {
 export interface TaskListProps extends StackProps {
   items?: TaskListItemData[]
   heading?: ReactNode
+  statuses?: TaskListStatuses
+  children?: ReactNode
+}
+
+export interface TaskListHeadingProps extends BoxProps {
+  children: ReactNode
 }
 
 export interface TaskListItemProps extends Omit<BoxProps, 'title'> {
@@ -46,34 +69,64 @@ export interface TaskListStatusProps extends BoxProps {
   children?: ReactNode
 }
 
+const TaskListHeading = forwardRef<HTMLHeadingElement, TaskListHeadingProps>(
+  function TaskListHeading({ children, ...props }, ref) {
+    return (
+      <Text
+        ref={ref}
+        as="h2"
+        fontSize={24}
+        fontWeight="700"
+        color="grey.950"
+        mb={pxToRem(15)}
+        {...props}
+      >
+        {children}
+      </Text>
+    )
+  }
+)
+
+TaskListHeading.displayName = 'TaskListHeading'
+
 const TaskListRoot = forwardRef<HTMLDivElement, TaskListProps>(function TaskListRoot(
-  { items, heading, children, ...props },
+  { items, heading, statuses, children, ...props },
   ref
 ) {
-  return (
-    <Stack ref={ref} gap={0} as="section" width="100%" {...props}>
-      {heading ? (
-        <Text as="h2" fontSize={24} fontWeight="700" color="grey.950" mb={pxToRem(15)}>
-          {heading}
-        </Text>
-      ) : null}
+  const childArray = Children.toArray(children)
+  const headingChild = childArray.find(
+    (child) => isValidElement(child) && child.type === TaskListHeading
+  )
+  const listChildren = childArray.filter((child) => child !== headingChild)
+  const resolvedStatuses = {
+    ...DEFAULT_STATUSES,
+    ...statuses,
+  }
 
-      <Box as="ul" listStyleType="none" m={0} p={0} borderTop="1px solid" borderColor="grey.100">
-        {items
-          ? items.map((item) => (
-              <TaskListItem
-                key={item.id ?? item.href}
-                title={item.title}
-                href={item.href}
-                hint={item.hint}
-                status={item.status}
-              />
-            ))
-          : children}
-      </Box>
-    </Stack>
+  return (
+    <TaskListStatusesContext.Provider value={resolvedStatuses}>
+      <Stack ref={ref} gap={0} as="section" width="100%" {...props}>
+        {headingChild ?? (heading ? <TaskListHeading>{heading}</TaskListHeading> : null)}
+
+        <Box as="ul" listStyleType="none" m={0} p={0} borderTop="1px solid" borderColor="grey.100">
+          {items
+            ? items.map((item) => (
+                <TaskListItem
+                  key={item.id ?? item.href}
+                  title={item.title}
+                  href={item.href}
+                  hint={item.hint}
+                  status={item.status}
+                />
+              ))
+            : listChildren}
+        </Box>
+      </Stack>
+    </TaskListStatusesContext.Provider>
   )
 })
+
+TaskListRoot.displayName = 'TaskList'
 
 const TaskListItem = forwardRef<HTMLLIElement, TaskListItemProps>(function TaskListItem(
   { title, href, status = 'incomplete', hint, ...props },
@@ -133,42 +186,43 @@ const TaskListItem = forwardRef<HTMLLIElement, TaskListItemProps>(function TaskL
   )
 })
 
-const TaskListStatus = forwardRef<HTMLSpanElement, TaskListStatusProps>(function TaskListStatus(
-  { status, children, ...props },
-  ref
-) {
-  const isCompleted = status === 'completed'
+TaskListItem.displayName = 'TaskListItem'
 
-  return (
-    <Box
-      ref={ref}
-      as="span"
-      flexShrink={0}
-      px={isCompleted ? 0 : pxToRem(8)}
-      py={isCompleted ? 0 : pxToRem(4)}
-      bg={
-        status === 'incomplete' || status === 'notStarted'
-          ? 'blue.100'
-          : status === 'cannotStartYet'
-            ? 'grey.50'
-            : 'transparent'
-      }
-      color={status === 'cannotStartYet' ? 'grey.950' : 'grey.950'}
-      borderRadius={isCompleted ? '0' : pxToRem(2)}
-      fontSize={16}
-      lineHeight={pxToRem(20)}
-      fontWeight={isCompleted ? '400' : '700'}
-      {...props}
-    >
-      {children ?? STATUS_LABEL[status]}
-    </Box>
-  )
-})
+const TaskListStatus = forwardRef<HTMLParagraphElement, TaskListStatusProps>(
+  function TaskListStatus({ status, children, ...props }, ref) {
+    const statuses = useContext(TaskListStatusesContext)
+    const statusConfig = statuses[status]
+
+    return (
+      <Tag
+        ref={ref}
+        as="span"
+        flexShrink={0}
+        variant={statusConfig?.color ?? 'grey'}
+        fontSize={16}
+        lineHeight={pxToRem(20)}
+        {...props}
+      >
+        {children ?? statusConfig?.label ?? status}
+      </Tag>
+    )
+  }
+)
+
+TaskListStatus.displayName = 'TaskListStatus'
+
+type TaskListCompound = typeof TaskListRoot & {
+  Root: typeof TaskListRoot
+  Heading: typeof TaskListHeading
+  Item: typeof TaskListItem
+  Status: typeof TaskListStatus
+}
 
 export const TaskList = Object.assign(TaskListRoot, {
   Root: TaskListRoot,
+  Heading: TaskListHeading,
   Item: TaskListItem,
   Status: TaskListStatus,
-})
+}) as TaskListCompound
 
-export { TaskListRoot, TaskListItem, TaskListStatus }
+export { TaskListRoot, TaskListHeading, TaskListItem, TaskListStatus }

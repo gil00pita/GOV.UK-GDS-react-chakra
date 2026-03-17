@@ -1,8 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { NotificationBanner } from './NotificationBanner'
+import { NotificationBanner, NotificationBannerProps } from './NotificationBanner'
 
-const meta: Meta = {
+interface NotificationBannerArgs extends Omit<NotificationBannerProps, 'hint'> {
+  heading: string
+  variant: 'info' | 'success' | 'error'
+}
+
+const meta: Meta<NotificationBannerArgs> = {
   title: 'GOV.UK/Components/Notification banner',
   parameters: {
     layout: 'centered',
@@ -16,15 +21,26 @@ const meta: Meta = {
     },
   },
   tags: ['autodocs'],
-}
+  argTypes: {
+    heading: { control: 'text' },
+    variant: {
+      control: 'select',
+      options: ['info', 'success', 'error'],
+    },
+  },
+  args: {
+    heading: 'Important',
+    variant: 'info',
+  },
+} satisfies Meta<NotificationBannerArgs>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => (
-    <NotificationBanner width="720px">
-      <NotificationBanner.Heading>Important</NotificationBanner.Heading>
+  render: (args) => (
+    <NotificationBanner width="720px" variant={args.variant}>
+      <NotificationBanner.Heading>{args.heading}</NotificationBanner.Heading>
       <NotificationBanner.Body>
         You have 7 days left to send your application.
       </NotificationBanner.Body>
@@ -33,9 +49,9 @@ export const Default: Story = {
 }
 
 export const WithHeadingAndBody: Story = {
-  render: () => (
-    <NotificationBanner width="720px" heading="Important">
-      <NotificationBanner.Heading>New passport rules</NotificationBanner.Heading>
+  render: (args) => (
+    <NotificationBanner width="720px" variant={args.variant}>
+      <NotificationBanner.Heading>{args.heading}</NotificationBanner.Heading>
       <NotificationBanner.Body>
         If your passport was issued before 1 January 2019, you may need to renew it before you
         travel.
@@ -45,9 +61,20 @@ export const WithHeadingAndBody: Story = {
 }
 
 export const Success: Story = {
-  render: () => (
-    <NotificationBanner width="720px" heading="Success" variant="success">
-      <NotificationBanner.Heading>Application complete</NotificationBanner.Heading>
+  render: (args) => (
+    <NotificationBanner width="720px" variant={'success'}>
+      <NotificationBanner.Heading>{args.heading}</NotificationBanner.Heading>
+      <NotificationBanner.Body>
+        Your reference number is <strong>HDJ2123F</strong>.
+      </NotificationBanner.Body>
+    </NotificationBanner>
+  ),
+}
+
+export const Error: Story = {
+  render: (args) => (
+    <NotificationBanner width="720px" variant={'error'}>
+      <NotificationBanner.Heading>{args.heading}</NotificationBanner.Heading>
       <NotificationBanner.Body>
         Your reference number is <strong>HDJ2123F</strong>.
       </NotificationBanner.Body>

@@ -21,10 +21,12 @@ const meta: Meta<typeof Link> = {
   argTypes: {
     href: { control: 'text' },
     children: { control: 'text' },
+    noStyle: { control: 'boolean' },
   },
   args: {
     href: '#',
     children: 'View guidance',
+    noStyle: false,
   },
 }
 

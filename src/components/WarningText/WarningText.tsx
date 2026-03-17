@@ -26,8 +26,8 @@ export const WarningText = forwardRef<HTMLDivElement, WarningTextProps>(function
         w={pxToRem(35)}
         h={pxToRem(35)}
         borderRadius="full"
-        bg="common.black"
-        color="common.white"
+        bg="fg"
+        color="fg.inverted"
         fontSize={pxToRem(30)}
         fontWeight="700"
         lineHeight="1"
@@ -38,7 +38,7 @@ export const WarningText = forwardRef<HTMLDivElement, WarningTextProps>(function
         {iconText}
       </Box>
 
-      <Text as="p" fontSize={19} color="grey.950" mb={0}>
+      <Text as="p" fontSize={19} color="fg" mb={0}>
         <VisuallyHidden>{`${assistiveText}: `}</VisuallyHidden>
         {children}
       </Text>

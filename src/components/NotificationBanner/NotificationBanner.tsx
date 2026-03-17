@@ -5,7 +5,7 @@ import { Heading } from '@/components/Heading'
 import { Text } from '@/components/Text'
 import { pxToRem } from '@/utils'
 
-export type NotificationBannerVariant = 'info' | 'success'
+export type NotificationBannerVariant = 'info' | 'success' | 'error'
 
 export interface NotificationBannerProps extends BoxProps {
   heading?: ReactNode
@@ -35,6 +35,10 @@ const variantStyles: Record<NotificationBannerVariant, { borderColor: string; he
       borderColor: 'green.500',
       headerBg: 'green.500',
     },
+    error: {
+      borderColor: 'red.500',
+      headerBg: 'red.500',
+    },
   }
 
 const NotificationBannerRoot = forwardRef<HTMLDivElement, NotificationBannerProps>(
@@ -52,8 +56,8 @@ const NotificationBannerRoot = forwardRef<HTMLDivElement, NotificationBannerProp
         aria-labelledby={titleId}
         border="5px solid"
         borderColor={styles.borderColor}
-        bg="common.white"
-        color="grey.950"
+        bg="transparent"
+        color="fg"
         {...props}
       >
         <NotificationBannerHeader variant={variant}>
@@ -100,13 +104,13 @@ const NotificationBannerContent = forwardRef<HTMLDivElement, NotificationBannerC
 
 const NotificationBannerHeading = forwardRef<HTMLHeadingElement, NotificationBannerHeadingProps>(
   function NotificationBannerHeading(props, ref) {
-    return <Heading ref={ref} as="h3" size={24} color="grey.950" mb={pxToRem(15)} {...props} />
+    return <Heading ref={ref} as="h3" size={24} color="fg" mb={pxToRem(15)} {...props} />
   }
 )
 
 const NotificationBannerBody = forwardRef<HTMLParagraphElement, NotificationBannerBodyProps>(
   function NotificationBannerBody(props, ref) {
-    return <Text ref={ref} fontSize={19} color="grey.950" mb={0} {...props} />
+    return <Text ref={ref} fontSize={19} color="fg" mb={0} {...props} />
   }
 )
 

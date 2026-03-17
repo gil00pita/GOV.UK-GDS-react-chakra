@@ -31,6 +31,7 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(function Text(
         fontSize={{ base: scale.small.fontSize, sm: scale.large.fontSize }}
         lineHeight={{ base: scale.small.lineHeight, sm: scale.large.lineHeight }}
         fontWeight={fontWeight}
+        fontFamily="body"
         {...props}
       />
     )

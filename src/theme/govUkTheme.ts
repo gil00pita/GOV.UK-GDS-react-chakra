@@ -51,6 +51,12 @@ const govUkThemeConfig = defineConfig({
             _dark: '{colors.grey.800}',
           },
         },
+        'bg.disabled': {
+          value: {
+            base: '{colors.grey.10}',
+            _dark: '{colors.grey.900}',
+          },
+        },
         fg: {
           value: {
             base: '{colors.govuk.text}',
@@ -67,6 +73,12 @@ const govUkThemeConfig = defineConfig({
           value: {
             base: '{colors.govuk.white}',
             _dark: '{colors.govuk.text}',
+          },
+        },
+        'fg.disabled': {
+          value: {
+            base: '{colors.grey.700}',
+            _dark: '{colors.grey.300}',
           },
         },
         border: {

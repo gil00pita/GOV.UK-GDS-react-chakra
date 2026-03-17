@@ -21,12 +21,36 @@ const meta: Meta<typeof Tag> = {
   args: {
     children: 'Completed',
     variant: 'grey',
+    uppercase: false,
+    bold: false,
+    variantStyles: {
+      pink: {
+        bg: 'pink.100',
+        color: 'pink.900',
+        _dark: { bg: 'pink.900', color: 'pink.100' },
+      },
+    },
   },
   argTypes: {
+    children: { control: 'text' },
+    bold: { control: 'boolean' },
     variant: {
       control: 'select',
-      options: ['grey', 'green', 'teal', 'blue', 'purple', 'magenta', 'red', 'orange', 'yellow'],
+      options: [
+        'grey',
+        'green',
+        'teal',
+        'blue',
+        'purple',
+        'magenta',
+        'red',
+        'orange',
+        'yellow',
+        'pink (custom variantStyles)',
+      ],
     },
+    uppercase: { control: 'boolean' },
+    variantStyles: { control: 'object' },
   },
 }
 
